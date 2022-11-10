@@ -61,6 +61,27 @@ namespace Nmy
 			mPlayAnimation->Render(hdc);
 		}
 
+
+		//BLENDFUNCTION func = {};
+		//func.BlendOp = AC_SRC_OVER;
+		//func.BlendFlags = 0;
+		//func.AlphaFormat = AC_SRC_ALPHA;
+		//// Åõ¸íµµ
+		//func.SourceConstantAlpha = 255;
+
+		//AlphaBlend(hdc
+		//	, 0
+		//	, 0
+		//	, mSPriteSheet->GetWidth()
+		//	, mSPriteSheet->GetHeight()
+		//	, mSPriteSheet->GetDc()
+		//	, 0
+		//	, 0
+		//	, mSPriteSheet->GetWidth()
+		//	, mSPriteSheet->GetHeight()
+		//	, func);
+
+
 	}
 
 
@@ -97,18 +118,44 @@ namespace Nmy
 		mEvents.insert(std::make_pair(name, events));
 	}
 
-	void Animator::CreateAnimations(const std::wstring& path)
+	void Animator::CreateAnimations(const std::wstring& name, const std::wstring& path
+	, Vector2 offset , float duration)
 	{
+
 		UINT width = 200;
 		UINT height = 200;
 		UINT filecount = 0;
+		
+		std::filesystem::path mpath(path);
+		std::vector<image*> images;
+		for (auto& p : std::filesystem::recursive_directory_iterator(path))
+		{
+			std::wstring filename = p.path().filename();
+			std::wstring fullName = path  + L"\\" + filename;
+			image* reimage = Resources::Load<image>(filename, fullName);
+			images.push_back(reimage);
 
-		std::wstring name = L"Cuphead";
-		   mSPriteSheet = image::Create(name, width * filecount , height);
+			if (width < reimage->GetWidth())
+				width = reimage->GetWidth();
+
+			if (height < reimage->GetHeight())
+				height = reimage->GetHeight();
+
+			filecount++;
+		}
 
 
+		mSPriteSheet = image::Create(name, width * filecount , height);
+		int index = 0;
+		for (image* reimage : images)
+		{
+			BitBlt(mSPriteSheet->GetDc(), width * index, 0, reimage->GetWidth(), reimage->GetHeight()
+				, reimage->GetDc(), 0, 0, SRCCOPY);
+			index++;
+		}
 
-
+		CreateAnimation(name, mSPriteSheet, Vector2::Zero, Vector2(width, height)
+			, offset, filecount, duration);
 	}
 
 

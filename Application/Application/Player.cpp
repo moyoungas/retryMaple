@@ -27,6 +27,8 @@ Nmy::Player::Player()
 	}
 
 	mAnimator = new Animator();
+	mAnimator->CreateAnimations(L"PlaneIdle", L"..\\Resource\\Animation\\Player\\");
+
 	mAnimator->CreateAnimation(L"Idle", pImage
 		, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f)
 		, Vector2(5.0f, -20.0f), 3, 0.1f);

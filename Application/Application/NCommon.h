@@ -12,7 +12,6 @@
 #pragma comment(lib,"Msimg32.lib")
 #include <functional>
 #include <filesystem>
-
 #include <set>
 // typedef Pos POINT;
 // 메인함수에 이미 존재하기에 주석처리 

@@ -19,13 +19,13 @@ Nmy::LogoScene::~LogoScene()
 void Nmy::LogoScene::Initialize()
 {
 
-	Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
-	mons[0] = Nmy::obj::Instantiate<Monster>(eColliderLayer::Monster);
-	mons[1] = Nmy::obj::Instantiate<Monster>(Vector2{ 1600 / 2 + 130, 300 / 2 }, eColliderLayer::Monster);
+	//Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
+	//mons[0] = Nmy::obj::Instantiate<Monster>(eColliderLayer::Monster);
+	//mons[1] = Nmy::obj::Instantiate<Monster>(Vector2{ 1600 / 2 + 130, 300 / 2 }, eColliderLayer::Monster);
 
 
-	ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player, true);
-	ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player_Projecttile, true);
+	//ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player, true);
+	//ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player_Projecttile, true);
 }
 
 void Nmy::LogoScene::Tick()

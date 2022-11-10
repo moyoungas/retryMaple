@@ -1,4 +1,5 @@
 #pragma once
+#include "NCommon.h"
 #include "NmyComponent.h"
 #include "NmyAnimation.h"
 
@@ -46,7 +47,7 @@ namespace Nmy
 		void CreateAnimation(const std::wstring& name, image* pimage
 			, Vector2 leftTop, Vector2 size, Vector2 offset
 			,  UINT spriteLength , float duration , bool bAffEctedCamera = true );
-		void CreateAnimations(const std::wstring& path);
+		void CreateAnimations(const std::wstring& name, const std::wstring& path, Vector2 offset = Vector2::Zero , float duration = 0.1f);
 
 
 		void Play(const std::wstring& name, bool bLoop = false);
@@ -69,7 +70,7 @@ namespace Nmy
 
 		Animation* mPlayAnimation;
 		bool mLoop;
-
+	public:
 		image* mSPriteSheet;
 	};
 
