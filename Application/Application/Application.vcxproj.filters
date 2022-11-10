@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="main">
+      <UniqueIdentifier>{551cc174-14a2-46a4-a9c8-d8030849624b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{e8eff03f-3922-4b4d-b0fe-b1349ad9ab39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="main\리소스 파일\소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="main\리소스 파일\헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Clinet">
+      <UniqueIdentifier>{4fe114e3-b379-4fc0-a42c-6d540eadeda2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NewEngine">
+      <UniqueIdentifier>{9276a856-16a0-4982-b697-ab72b0bc6e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{181feb92-8aca-4541-8652-d2fd4ec3c980}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NewEngine\Common">
+      <UniqueIdentifier>{952d61c6-432d-4e12-8363-8454bdcdaa18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{5e272e0c-006a-4f7e-b781-38b64129e657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{222fcf90-ab1d-4cd9-a4f5-35875f62bb73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\base">
+      <UniqueIdentifier>{67ee0a19-b6a6-45af-a558-ede16b59ce13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{6863fbba-7f93-4ce3-bf2b-33303f0a67e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component">
+      <UniqueIdentifier>{dfc99ba9-f718-4b18-8f1f-798a6f3c1a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Base">
+      <UniqueIdentifier>{aa6e5fa7-c1af-4eec-82ea-6a5c3a72147a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\base">
+      <UniqueIdentifier>{c6d258f2-13db-49c7-9d0b-3c7d4bcffd55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NewEngine\High level interface">
+      <UniqueIdentifier>{1365e79b-d794-4406-b612-810e96f1ba52}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyEntity.h">
+      <Filter>NewEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths.h">
+      <Filter>NewEngine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="NCommon.h">
+      <Filter>NewEngine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyLogoScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Actor\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyInput.h">
+      <Filter>Actor\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Missile.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Drop.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="DropManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Nmyimage.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="MyResources.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyComponent.h">
+      <Filter>Component\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyAnimator.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyCollider.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyScene.h">
+      <Filter>Scene\base</Filter>
+    </ClInclude>
+    <ClInclude Include="myNewApplication.h">
+      <Filter>NewEngine\High level interface</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyPlayScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyEndingScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyBGActor.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Actor\base</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyMonster.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyCamera.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyBacKPack.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyObject.h">
+      <Filter>NewEngine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyAnimation.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Application.rc">
+      <Filter>main\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>main\리소스 파일</Filter>
+    </Image>
+    <Image Include="Application.ico">
+      <Filter>main\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyEntity.cpp">
+      <Filter>NewEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyLogoScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Actor\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyInput.cpp">
+      <Filter>Actor\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Missile.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Drop.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="DropManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyResource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Nmyimage.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="MyResources.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths.cpp">
+      <Filter>NewEngine\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyComponent.cpp">
+      <Filter>Component\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyAnimator.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyCollider.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyScene.cpp">
+      <Filter>Scene\base</Filter>
+    </ClCompile>
+    <ClCompile Include="myNewApplication.cpp">
+      <Filter>NewEngine\High level interface</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyPlayScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyEndingScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyBGActor.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Actor\base</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyMonster.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyCamera.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyBackPack.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyAnimation.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="def.h">
+      <Filter>NewEngine\Common</Filter>
+    </None>
+  </ItemGroup>
+</Project>
