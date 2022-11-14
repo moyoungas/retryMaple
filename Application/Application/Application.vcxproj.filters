@@ -55,6 +55,15 @@
     <Filter Include="NewEngine\High level interface">
       <UniqueIdentifier>{1365e79b-d794-4406-b612-810e96f1ba52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mob">
+      <UniqueIdentifier>{87d252e8-d38d-4772-aa6f-bddf180b8f41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Tile">
+      <UniqueIdentifier>{1ff7a9e8-432e-4dbc-9a56-1e854fba3d1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Game">
+      <UniqueIdentifier>{b3fd5a34-8588-409b-88a0-b393bbc43d9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -92,12 +101,6 @@
     </ClInclude>
     <ClInclude Include="NmyInput.h">
       <Filter>Actor\base</Filter>
-    </ClInclude>
-    <ClInclude Include="Missile.h">
-      <Filter>Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Drop.h">
-      <Filter>Actor</Filter>
     </ClInclude>
     <ClInclude Include="DropManager.h">
       <Filter>Manager</Filter>
@@ -141,23 +144,41 @@
     <ClInclude Include="Actor.h">
       <Filter>Actor\base</Filter>
     </ClInclude>
-    <ClInclude Include="NmyMonster.h">
-      <Filter>Actor</Filter>
-    </ClInclude>
     <ClInclude Include="ColliderManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="NmyCamera.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="NmyBacKPack.h">
-      <Filter>Actor</Filter>
-    </ClInclude>
     <ClInclude Include="NmyObject.h">
       <Filter>NewEngine\Common</Filter>
     </ClInclude>
     <ClInclude Include="NmyAnimation.h">
       <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyMob.h">
+      <Filter>Mob</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ymTilePalette.h">
+      <Filter>Actor\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Drop.h">
+      <Filter>Actor\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Missile.h">
+      <Filter>Actor\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyMonster.h">
+      <Filter>Actor\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="NmyBacKPack.h">
+      <Filter>Actor\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ymTile.h">
+      <Filter>Actor\Tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -194,12 +215,6 @@
     </ClCompile>
     <ClCompile Include="NmyInput.cpp">
       <Filter>Actor\base</Filter>
-    </ClCompile>
-    <ClCompile Include="Missile.cpp">
-      <Filter>Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Drop.cpp">
-      <Filter>Actor</Filter>
     </ClCompile>
     <ClCompile Include="DropManager.cpp">
       <Filter>Manager</Filter>
@@ -246,20 +261,38 @@
     <ClCompile Include="Actor.cpp">
       <Filter>Actor\base</Filter>
     </ClCompile>
-    <ClCompile Include="NmyMonster.cpp">
-      <Filter>Actor</Filter>
-    </ClCompile>
     <ClCompile Include="ColliderManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="NmyCamera.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="NmyBackPack.cpp">
-      <Filter>Actor</Filter>
-    </ClCompile>
     <ClCompile Include="NmyAnimation.cpp">
       <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyMob.cpp">
+      <Filter>Mob</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ymTilePalette.cpp">
+      <Filter>Actor\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="Drop.cpp">
+      <Filter>Actor\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Missile.cpp">
+      <Filter>Actor\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyMonster.cpp">
+      <Filter>Actor\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="NmyBackPack.cpp">
+      <Filter>Actor\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ymTile.cpp">
+      <Filter>Actor\Tile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

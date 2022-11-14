@@ -12,10 +12,12 @@ WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
+ATOM                MyRegisterClass(HINSTANCE hInstance, WNDPROC wndProc, LPCWSTR windowName);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    AtlasWndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
 
 
 // int main
@@ -49,7 +51,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_APPLICATION, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
+    MyRegisterClass(hInstance, WndProc, szWindowClass);
+    MyRegisterClass(hInstance, AtlasWndProc, L"AtlasWindow");
 
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
@@ -110,7 +113,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 //  용도: 창 클래스를 등록합니다.
 //
-ATOM MyRegisterClass(HINSTANCE hInstance)
+ATOM MyRegisterClass(HINSTANCE hInstance, WNDPROC wndProc, LPCWSTR windowName)
 {
     WNDCLASSEXW wcex;
 
@@ -118,7 +121,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbSize = sizeof(WNDCLASSEX);
 
     wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
+    wcex.lpfnWndProc    = wndProc;
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
@@ -128,8 +131,8 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
 
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_APPLICATION);
-    wcex.lpszClassName  = szWindowClass;
+    wcex.lpszMenuName = nullptr;//MAKEINTRESOURCEW(IDC_APPLICATION);
+    wcex.lpszClassName  = windowName;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -153,6 +156,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    windowdata.width = 1600;
    windowdata.height = 900;
 
+
+
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
@@ -167,8 +172,26 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
-
    Nmy::NewApplication::Getinstance().Initialize(windowdata);
+
+
+
+
+
+   WindowDataA Atlaswindowdata;
+   //Atlaswindowdata.width = 500;
+   //Atlaswindowdata.height = 500;
+
+   hWnd = CreateWindowW(L"AtlasWindow", szTitle, WS_OVERLAPPEDWINDOW,
+       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+
+   Atlaswindowdata.hWnd = hWnd;
+
+ /*  SetWindowPos(hWnd, nullptr, windowdata.width, 0, Atlaswindowdata.width, Atlaswindowdata.height, 0);
+   ShowWindow(hWnd, nCmdShow);
+   UpdateWindow(hWnd);*/
+
+   Nmy::NewApplication::Getinstance().initializeAtalsWindow(Atlaswindowdata);
 
 
    return TRUE;
@@ -184,6 +207,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
 //
 //
+
+#include "SceneManager.h"
+#include "NmyScene.h"
+#include "ToolScene.h"
+#include "ymTilePalette.h"
+#include "Nmyimage.h"
+#include "NmyInput.h"
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     // 윈도우는 메세지 기반으로 움직인다.
@@ -350,6 +381,101 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         /*KillTimer(hWnd, 0);*/
     }
         break;
+    default:
+        return DefWindowProc(hWnd, message, wParam, lParam);
+    }
+    return 0;
+}
+
+LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    switch (message)
+    {
+
+    case WM_CREATE:
+    {
+        WindowDataA windowdata =
+            Nmy::NewApplication::Getinstance().GetWindowdata();
+
+        WindowDataA Atlasdata = 
+            Nmy::NewApplication::Getinstance().GetAtlasWindowdata();
+
+
+
+        Nmy::Scene* scene = Nmy::SceneManager::GetPlayScene();
+        Nmy::ToolScene* toolScene = dynamic_cast<Nmy::ToolScene*>(scene);
+
+        Nmy::image* atlas = toolScene->GetAtlasimage();
+
+        RECT rect = { 0, 0, atlas->GetWidth(), atlas->GetHeight()};
+        //AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, true);
+
+        // 윈도우 크기 변경
+        SetWindowPos(hWnd, nullptr, windowdata.width, 0,
+            atlas->GetWidth(), atlas->GetHeight(), 0);
+
+        ShowWindow(hWnd, true);
+        UpdateWindow(hWnd);
+
+
+        
+    }
+    break;
+    case WM_COMMAND:
+    {
+        int wmId = LOWORD(wParam);
+        // 메뉴 선택을 구문 분석합니다:
+        switch (wmId)
+        {
+        case IDM_ABOUT:
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            break;
+        case IDM_EXIT:
+            DestroyWindow(hWnd);
+            break;
+        default:
+            return DefWindowProc(hWnd, message, wParam, lParam);
+        }
+    }
+    break;
+
+    case WM_LBUTTONDOWN:
+    {
+        Nmy::Vector2 mousePos = Nmy::Input::GetMousePos();
+        int a = 0;
+
+
+
+    }
+    break;
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+
+        WindowDataA Atlasdata =
+            Nmy::NewApplication::Getinstance().GetAtlasWindowdata();
+
+
+
+        Nmy::Scene* scene = Nmy::SceneManager::GetPlayScene();
+        Nmy::ToolScene* toolScene = dynamic_cast<Nmy::ToolScene*>(scene);
+
+        Nmy::image* atlas = toolScene->GetAtlasimage();
+
+        Nmy::Vector2 pos(Nmy::Vector2::Zero);
+        TransparentBlt(hdc, pos.x, pos.y, atlas->GetWidth(), atlas->GetHeight(),
+            atlas->GetDc(), 0, 0, atlas->GetWidth(), atlas->GetHeight(), RGB(255, 0, 255));
+
+
+    }
+    break;
+    case WM_DESTROY:
+    {
+        PostQuitMessage(0);
+
+    }
+    break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }

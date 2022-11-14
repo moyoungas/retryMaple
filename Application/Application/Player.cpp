@@ -26,8 +26,8 @@ Nmy::Player::Player()
 		pImage = Resources::Load<image>(L"Player", L"..\\Resource\\Image\\link.bmp");
 	}
 
-	mAnimator = new Animator();
-	mAnimator->CreateAnimations(L"PlaneIdle", L"..\\Resource\\Animation\\Player\\");
+	mAnimator = new Animator();/*
+	mAnimator->CreateAnimations(L"PlaneIdle", L"..\\Resource\\Animation\\Player\\");*/
 
 	mAnimator->CreateAnimation(L"Idle", pImage
 		, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f)

@@ -7,6 +7,8 @@
 #include "ColliderManager.h"
 #include "NmyCamera.h"
 
+#include "Application.h"
+
 namespace Nmy
 {/*
 	NewApplication NewApplication::mInstance;*/
@@ -22,6 +24,13 @@ namespace Nmy
 
 		SceneManager::Initialize();
 		//DropManager::Initialize();
+	}
+
+	void Nmy::NewApplication::initializeAtalsWindow(WindowDataA data)
+	{
+		mAtlasWindowdata = data;
+		mAtlasWindowdata.hdc = GetDC(data.hWnd);
+
 	}
 
 	void Nmy::NewApplication::Tick()
@@ -106,6 +115,29 @@ namespace Nmy
 		 mBrush[(UINT)eBrushColor::Black] = (HBRUSH)GetStockObject(BLACK_BRUSH);
 		 mBrush[(UINT)eBrushColor::White] = (HBRUSH)GetStockObject(WHITE_BRUSH);
 		 mBrush[(UINT)eBrushColor::Gray] = CreateSolidBrush(RGB(71, 71, 71));
+
+
+		 mMenu = LoadMenu(nullptr, MAKEINTRESOURCEW(IDC_APPLICATION));
+	}
+
+
+
+	void NewApplication::SetMenuBar(bool power)
+	{
+		SetMenu(mWindowdata.hWnd, mMenu);
+
+		// 비트맵 해상도를 설정하기 위한 실제 윈도우 크기 계산
+		RECT rect = { 0, 0, mWindowdata.width, mWindowdata.height };
+		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, power);
+
+		// 윈도우 크기 변경
+		SetWindowPos(mWindowdata.hWnd, nullptr, 0, 0,
+			rect.right - rect.left,
+			rect.bottom - rect.top, 0
+		);
+
+		ShowWindow(mWindowdata.hWnd, true);
+
 	}
 
 }

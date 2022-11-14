@@ -151,6 +151,7 @@
     <ClInclude Include="Nmyimage.h" />
     <ClInclude Include="NmyInput.h" />
     <ClInclude Include="NmyLogoScene.h" />
+    <ClInclude Include="NmyMob.h" />
     <ClInclude Include="NmyMonster.h" />
     <ClInclude Include="NmyObject.h" />
     <ClInclude Include="NmyPlayScene.h" />
@@ -162,6 +163,9 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="ToolScene.h" />
+    <ClInclude Include="ymTile.h" />
+    <ClInclude Include="ymTilePalette.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
@@ -185,6 +189,7 @@
     <ClCompile Include="Nmyimage.cpp" />
     <ClCompile Include="NmyInput.cpp" />
     <ClCompile Include="NmyLogoScene.cpp" />
+    <ClCompile Include="NmyMob.cpp" />
     <ClCompile Include="NmyMonster.cpp" />
     <ClCompile Include="NmyPlayScene.cpp" />
     <ClCompile Include="NmyResource.cpp" />
@@ -193,6 +198,9 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="ToolScene.cpp" />
+    <ClCompile Include="ymTile.cpp" />
+    <ClCompile Include="ymTilePalette.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Application.rc" />

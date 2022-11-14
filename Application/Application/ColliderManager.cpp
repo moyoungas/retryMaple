@@ -162,4 +162,9 @@ namespace Nmy
 
 		return false;
 	}
+	void ColliderManager::Clear()
+	{
+		memset(mMatrix, 0, sizeof(WORD) * _COLLIDER_LAYER);
+		mCollisionInfo.clear();
+	}
 }

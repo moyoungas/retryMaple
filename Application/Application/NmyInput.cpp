@@ -109,6 +109,20 @@ namespace Nmy
 
 	}
 
+	//Vector2 Input::GetMousePos(HWND hwnd)
+	//{
+
+	//	Vector2 vMousPos = Vector2::Zero;
+	//	if (GetFocus())
+	//	{
+	//		POINT mousePos = {};
+	//		GetCursorPos(&mousePos);
+
+
+	//	}
+	//	return;
+	//}
+
 
 	eKeyState Input::GetKeystate(eKeyCode ekey)
 	{

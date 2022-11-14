@@ -18,6 +18,8 @@ namespace Nmy
 		static void LayerCollision(Scene* scene , eColliderLayer left, eColliderLayer right);
 		static void ColliderCollision(Collider* left, Collider* right);
 		static bool Intersect(Collider* left, Collider* right);
+		static void Clear();
+
 
 	private:
 		

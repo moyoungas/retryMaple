@@ -10,6 +10,7 @@ enum class eSceneType
 
 	Logo,
 	Title,
+	Tool,
 	Play,
 	End,
 	MAX,
@@ -85,3 +86,10 @@ union ColliderID
 	UINT64 ID;
 
 };
+
+// 게임에 따라 변경할것
+
+#define TILE_SIZE 32
+#define TILE_SCALE 2
+#define TILE_LINE_X 8
+#define TILE_LINE_Y 3

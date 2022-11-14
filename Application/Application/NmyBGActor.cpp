@@ -43,13 +43,12 @@ namespace Nmy
 
 		Actor::Render(hdc);
 	}
-	void BGActor::SetImage(const std::wstring& key, const std::wstring& imageName)
+	void BGActor::SetImage(const std::wstring& key, const std::wstring& fileName)
 	{
-
 		if (pImage == nullptr)
 		{
 			std::wstring path = L"..\\Resource\\Image\\";
-			path += imageName;
+			path += fileName;
 
 			pImage = Resources::Load<image>(key, path);
 		}

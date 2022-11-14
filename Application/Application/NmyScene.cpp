@@ -1,6 +1,7 @@
 #include "NmyScene.h"
 #include"Actor.h"
 #include "SceneManager.h"
+#include "ColliderManager.h"
 
 namespace Nmy
 {
@@ -91,6 +92,7 @@ namespace Nmy
 
 	void Scene::Exit()
 	{
+		ColliderManager::Clear();
 	}
 
 

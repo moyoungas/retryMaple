@@ -4,6 +4,7 @@
 #include "NmyPlayScene.h"
 #include "NmyEndingScene.h"
 #include "NmyObject.h"
+#include "ToolScene.h"
 
 namespace Nmy
 {
@@ -26,6 +27,9 @@ namespace Nmy
 
 		mScene[(UINT)eSceneType::End] = new EndScene;
 		mScene[(UINT)eSceneType::End]->Initialize();
+
+		mScene[(UINT)eSceneType::Tool] = new ToolScene;
+		mScene[(UINT)eSceneType::Tool]->Initialize();
 
 		ChangeScene(eSceneType::Logo);
 		// 자식이 부모로 업캐스팅

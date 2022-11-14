@@ -2,11 +2,18 @@
 #include "Player.h"
 #include "NmyInput.h"
 #include "SceneManager.h"
+#include "NmyBGActor.h"
 
 namespace Nmy
 {
 	void PlayScene::Initialize()
 	{
+
+		BGActor* bg = new BGActor();
+		bg->SetImage(L"backGroundMap", L"backGroundMap.bmp");
+		bg->Initialize();
+
+		AddGameActor(bg, eColliderLayer::BackGround);
 	}
 	void PlayScene::Tick()
 	{

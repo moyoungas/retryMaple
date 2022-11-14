@@ -32,7 +32,7 @@ namespace Nmy
 	void TitleScene::Initialize()
 	{
 		BGActor* bg = new BGActor();
-		bg->SetImage(L"TitleBG", L"TitleBG.bmp");
+		bg->SetImage(L"Logoimage", L"Logoimage.bmp");
 		bg->Initialize();
 
 		AddGameActor(bg,eColliderLayer::BackGround);
