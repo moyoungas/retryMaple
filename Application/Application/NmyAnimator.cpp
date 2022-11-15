@@ -131,8 +131,17 @@ namespace Nmy
 		for (auto& p : std::filesystem::recursive_directory_iterator(path))
 		{
 			std::wstring filename = p.path().filename();
+
+			std::wstring keyName = path;
+			auto const pos = keyName.find_last_of(L"\\");
+			std::wstring last = keyName.substr(pos + 1, keyName.length());
+			keyName = keyName.substr(0, pos);
+
+
 			std::wstring fullName = path  + L"\\" + filename;
-			image* reimage = Resources::Load<image>(filename, fullName);
+
+
+			image* reimage = Resources::Load<image>(filename, fullName); 
 			images.push_back(reimage);
 
 			if (width < reimage->GetWidth())

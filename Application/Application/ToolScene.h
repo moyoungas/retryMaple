@@ -21,9 +21,12 @@ namespace Nmy
 		virtual void Exit();
 
 		image* GetAtlasimage() { return mTilePalette->GetAtlasImage(); }
+		void SetTileIndex(UINT index) { mTileIndex = index; }
+		UINT GetTileIndex() { return mTileIndex; }
 
 	private:
 		TilePalette* mTilePalette;
+		UINT mTileIndex;
 	};
 
 

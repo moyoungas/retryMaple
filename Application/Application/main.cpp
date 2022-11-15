@@ -173,7 +173,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    Nmy::NewApplication::Getinstance().Initialize(windowdata);
+   eSceneType type = Nmy::NewApplication::Getinstance().GetPlaySceneType();
 
+   if (type != eSceneType::Tool)
+       return TRUE;
 
 
 
@@ -381,101 +384,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         /*KillTimer(hWnd, 0);*/
     }
         break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
-}
-
-LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    switch (message)
-    {
-
-    case WM_CREATE:
-    {
-        WindowDataA windowdata =
-            Nmy::NewApplication::Getinstance().GetWindowdata();
-
-        WindowDataA Atlasdata = 
-            Nmy::NewApplication::Getinstance().GetAtlasWindowdata();
-
-
-
-        Nmy::Scene* scene = Nmy::SceneManager::GetPlayScene();
-        Nmy::ToolScene* toolScene = dynamic_cast<Nmy::ToolScene*>(scene);
-
-        Nmy::image* atlas = toolScene->GetAtlasimage();
-
-        RECT rect = { 0, 0, atlas->GetWidth(), atlas->GetHeight()};
-        //AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, true);
-
-        // 윈도우 크기 변경
-        SetWindowPos(hWnd, nullptr, windowdata.width, 0,
-            atlas->GetWidth(), atlas->GetHeight(), 0);
-
-        ShowWindow(hWnd, true);
-        UpdateWindow(hWnd);
-
-
-        
-    }
-    break;
-    case WM_COMMAND:
-    {
-        int wmId = LOWORD(wParam);
-        // 메뉴 선택을 구문 분석합니다:
-        switch (wmId)
-        {
-        case IDM_ABOUT:
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-            break;
-        case IDM_EXIT:
-            DestroyWindow(hWnd);
-            break;
-        default:
-            return DefWindowProc(hWnd, message, wParam, lParam);
-        }
-    }
-    break;
-
-    case WM_LBUTTONDOWN:
-    {
-        Nmy::Vector2 mousePos = Nmy::Input::GetMousePos();
-        int a = 0;
-
-
-
-    }
-    break;
-    case WM_PAINT:
-    {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-
-        WindowDataA Atlasdata =
-            Nmy::NewApplication::Getinstance().GetAtlasWindowdata();
-
-
-
-        Nmy::Scene* scene = Nmy::SceneManager::GetPlayScene();
-        Nmy::ToolScene* toolScene = dynamic_cast<Nmy::ToolScene*>(scene);
-
-        Nmy::image* atlas = toolScene->GetAtlasimage();
-
-        Nmy::Vector2 pos(Nmy::Vector2::Zero);
-        TransparentBlt(hdc, pos.x, pos.y, atlas->GetWidth(), atlas->GetHeight(),
-            atlas->GetDc(), 0, 0, atlas->GetWidth(), atlas->GetHeight(), RGB(255, 0, 255));
-
-
-    }
-    break;
-    case WM_DESTROY:
-    {
-        PostQuitMessage(0);
-
-    }
-    break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }

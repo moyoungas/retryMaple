@@ -31,6 +31,10 @@ namespace Nmy
 		}
 
 
+		Vector2(const Vector2& other) = default;
+		Vector2() = default;
+		~Vector2() = default;
+
 		Vector2 operator + (const Vector2& other)
 		{
 			Vector2 temp;
@@ -42,9 +46,16 @@ namespace Nmy
 		Vector2 operator /(const float other)
 		{
 			Vector2 temp;
-			temp.x = this->x / other;
-			temp.y = this->y / other;
+			temp.x = x / other;
+			temp.y = y / other;
 			return temp;
+		}
+
+		Vector2& operator*(const float other)
+		{
+			x = x * other;
+			y = y * other;
+			return *this;
 		}
 
 		Vector2 operator -(const Vector2& other)
@@ -59,6 +70,12 @@ namespace Nmy
 		{
 			x += other.x;
 			y += other.y;
+		}
+
+		void operator *=(const float other)
+		{
+			x *= other;
+			y *= other;
 		}
 
 		float Length()
@@ -77,9 +94,6 @@ namespace Nmy
 		}
 
 
-		Vector2(const Vector2& other) = default;
-		Vector2() = default;
-		~Vector2() = default;
 	};
 
 

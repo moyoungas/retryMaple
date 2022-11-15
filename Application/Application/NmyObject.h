@@ -29,9 +29,6 @@ namespace Nmy
 			return actor;
 		}
 
-
-
-
 		static __forceinline void Destory(Actor* actor)
 		{
 			actor->Death();

@@ -10,9 +10,12 @@ namespace Nmy
 {
 	Scene* SceneManager::mScene[(UINT)eSceneType::MAX] = {};
 	Scene* SceneManager::mPlayScene = nullptr;
+	eSceneType SceneManager::mType = eSceneType::MAX;
 
 	void SceneManager::Initialize()
 	{
+		mScene[(UINT)eSceneType::Tool] = new ToolScene;
+		mScene[(UINT)eSceneType::Tool]->Initialize();
 		// 모든 씬들을 초기화
 		mScene[(UINT)eSceneType::Logo] = new LogoScene;
 		mScene[(UINT)eSceneType::Logo]->Initialize();
@@ -28,8 +31,6 @@ namespace Nmy
 		mScene[(UINT)eSceneType::End] = new EndScene;
 		mScene[(UINT)eSceneType::End]->Initialize();
 
-		mScene[(UINT)eSceneType::Tool] = new ToolScene;
-		mScene[(UINT)eSceneType::Tool]->Initialize();
 
 		ChangeScene(eSceneType::Logo);
 		// 자식이 부모로 업캐스팅
@@ -77,6 +78,7 @@ namespace Nmy
 	{
 		if (mScene[(UINT)aType] == nullptr)
 			return;
+		mType = aType;
 
 		mPlayScene->Exit();
 		mPlayScene = mScene[(UINT)aType];

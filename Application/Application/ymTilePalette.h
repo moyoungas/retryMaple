@@ -14,7 +14,7 @@ namespace Nmy
 		void Tick();
 		void Render(HDC hdc);
 
-		// CreateTile
+		void CreateTile(UINT index, Vector2 IndexPos);
 		// CreateTiles
 
 		// void Save
@@ -26,6 +26,7 @@ namespace Nmy
 
 	private:
 		image* mImage;
+		std::unordered_map<UINT64, Tile*> mTiles;
 	};
 
 

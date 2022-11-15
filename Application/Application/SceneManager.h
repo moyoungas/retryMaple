@@ -17,6 +17,7 @@ namespace Nmy
 		static void DestroyActor();
 
 		static Scene* GetPlayScene() { return mPlayScene; }
+		static eSceneType GetPlaySceneType() { return mType; }
 		static void ChangeScene(eSceneType aType);
 
 		static void SetPlayScene(Scene* scene) { mPlayScene = scene; }
@@ -24,7 +25,7 @@ namespace Nmy
 	private:
 		static Scene* mScene[(UINT)eSceneType::MAX];
 		static Scene* mPlayScene;
-
+		static eSceneType mType;
 	};
 
 

@@ -2,6 +2,7 @@
 #include "Nmyimage.h"
 #include "MyResources.h"
 #include "NmyCollider.h"
+#include "Player.h"
 
 namespace Nmy
 {
@@ -25,7 +26,7 @@ namespace Nmy
 	Mob::~Mob()
 	{
 
-
+			
 
 	}
 	void Mob::Initialize()

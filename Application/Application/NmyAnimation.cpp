@@ -46,6 +46,7 @@ namespace Nmy
 	{
 		Actor* actorobj = mAnimator->GetOwner();
 		Vector2 pos = actorobj->GetPos();
+		Vector2 scale = actorobj->GetScale();
 
 		if (mAffectedCamera)
 			pos = Camera::CalculatePos(pos);
@@ -64,8 +65,8 @@ namespace Nmy
 		AlphaBlend(hdc
 			,int(pos.x - mSpriteSheet[mSpriteIndex].size.x / 2.0f)
 			,int(pos.y - mSpriteSheet[mSpriteIndex].size.y / 2.0f)
-			,int(mSpriteSheet[mSpriteIndex].size.x)
-			,int(mSpriteSheet[mSpriteIndex].size.y)
+			,int(mSpriteSheet[mSpriteIndex].size.x * scale.x)
+			,int(mSpriteSheet[mSpriteIndex].size.y * scale.y)
 			, pimage->GetDc() 
 			,int(mSpriteSheet[mSpriteIndex].leftTop.x)
 			,int(mSpriteSheet[mSpriteIndex].leftTop.y)

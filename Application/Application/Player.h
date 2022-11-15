@@ -24,6 +24,7 @@ namespace Nmy
 	private:
 		float mCoff;
 		float mSpeed;
+		float mDmg;
 		image* pImage;
 		Animator* mAnimator;
 		Vector2 mMissileDir;

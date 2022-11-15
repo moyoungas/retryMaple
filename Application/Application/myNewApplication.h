@@ -1,8 +1,6 @@
 #pragma once
 
 #include "NCommon.h"
-#include "NmyScene.h"
-#include "Nmyimage.h"
 
 namespace Nmy
 {
@@ -28,6 +26,9 @@ namespace Nmy
 		HDC GetHDC() { return mWindowdata.hdc; }
 		HPEN GetPen(ePenColor color) { return mPen[(UINT)color]; }
 		HBRUSH GetBrush(eBrushColor color) { return mBrush[(UINT)color]; }
+
+		eSceneType GetPlaySceneType();
+
 
 
 	private:

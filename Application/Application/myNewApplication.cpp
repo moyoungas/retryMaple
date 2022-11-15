@@ -140,5 +140,10 @@ namespace Nmy
 
 	}
 
+	eSceneType  NewApplication::GetPlaySceneType()
+	{
+		return SceneManager::GetPlaySceneType();
+	}
+
 }
 

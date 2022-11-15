@@ -129,4 +129,22 @@ namespace Nmy
 		return mKeys[(UINT)ekey].stateKey;
 	}
 
+	Vector2 Input::GetMousePos(HWND hWnd)
+	{
+
+		Vector2 vMousePos = Vector2(-1.0f,-1.0f);
+		if (GetFocus())
+		{
+			POINT mousePos = {};
+			GetCursorPos(&mousePos);
+			ScreenToClient(hWnd, &mousePos);
+
+			mMousePos.x = mousePos.x;
+			mMousePos.y = mousePos.y;
+
+			return mMousePos;
+		}
+		return vMousePos;
+	}
+
 }
