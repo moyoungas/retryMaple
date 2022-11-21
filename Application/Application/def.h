@@ -55,6 +55,7 @@ enum class eColliderLayer
 	Map,
 	Player,
 	Player_Projecttile,
+	Mob,
 	Monster,
 	Monster_Projecttile,
 	Ground,

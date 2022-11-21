@@ -26,8 +26,8 @@ namespace Nmy
 		void SetDeathTime(float time) { mDeathTime = time; }
 		float GetHp() { return mHp; }
 
-
 	private:
+		float aTime;
 		float mSpeed;
 		float mHp;
 		float mDeathTime;

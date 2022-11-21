@@ -40,10 +40,10 @@ void Nmy::LogoScene::Initialize()
 
 
 	Player* mplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
+	Mob* mMob = Nmy::obj::Instantiate<Mob>(eColliderLayer::Mob);
 	Ground* ground = Nmy::obj::Instantiate<Ground>(eColliderLayer::Ground);
 	ground->SetPos(Vector2(700.0f, 700.0f));
 
-	Nmy::obj::Instantiate<Mob>(eColliderLayer::Monster);
 
 
 
@@ -88,6 +88,7 @@ void Nmy::LogoScene::Enter()
 	ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player, true);
 	ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player_Projecttile, true);
 	ColliderManager::SetLayer(eColliderLayer::Ground, eColliderLayer::Player, true);
+	ColliderManager::SetLayer(eColliderLayer::Ground, eColliderLayer::Mob, true);
 
 
 }
