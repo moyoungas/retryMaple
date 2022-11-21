@@ -19,7 +19,10 @@ namespace Nmy
 		virtual void OnCollisionStay(Collider* other) override;
 		virtual void OnCollisionExit(Collider* other) override;
 
+
 		void WalkComplete();
+		void SetHp(int hp) { mHp = hp; }
+		int GetHp() { return mHp; }
 
 	private:
 		float mCoff;
@@ -28,6 +31,8 @@ namespace Nmy
 		image* pImage;
 		Animator* mAnimator;
 		Vector2 mMissileDir;
+
+		int mHp;
 	};
 
 

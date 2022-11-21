@@ -35,6 +35,28 @@ namespace Nmy
 		Vector2() = default;
 		~Vector2() = default;
 
+
+		void Clear()
+		{
+			x = 0.0f;
+			y = 0.0f;
+		}
+
+		bool operator ==(const Vector2& other)
+		{
+			return x == other.x && y == other.y;
+		}
+
+		bool operator !=(const Vector2& other)
+		{
+			return x != other.x && y != other.y;
+		}
+
+		Vector2 operator-()
+		{
+			return Vector2(-x, -y);
+		}
+
 		Vector2 operator + (const Vector2& other)
 		{
 			Vector2 temp;
@@ -51,11 +73,12 @@ namespace Nmy
 			return temp;
 		}
 
-		Vector2& operator*(const float other)
+		Vector2 operator*(const float& other)
 		{
-			x = x * other;
-			y = y * other;
-			return *this;
+			Vector2 temp;
+			temp.x = x * other;
+			temp.y = y * other;
+			return temp;
 		}
 
 		Vector2 operator -(const Vector2& other)
@@ -76,6 +99,14 @@ namespace Nmy
 		{
 			x *= other;
 			y *= other;
+		}
+
+		Vector2& operator -=(const Vector2& other)
+		{
+			x -= other.x;
+			y -= other.y;
+
+			return *this;
 		}
 
 		float Length()
@@ -120,6 +151,12 @@ namespace Nmy
 			ret.x = value.x * cosf(radian) - value.y * sinf(radian);
 			ret.y = value.x * sinf(radian) + value.y * cosf(radian);
 			return ret;
+		}
+
+		float Dot(const Vector2& v1, const Vector2& v2)
+		{
+
+			return v1.x * v2.x + v1.y * v2.y;
 		}
 
 

@@ -10,12 +10,16 @@
 #include "NmyCollider.h"
 #include "NmyCamera.h"
 #include "NmyBacKPack.h"
+#include "ymUIManager.h"
+#include "ymRigidBody.h"
 
 Nmy::Player::Player() 
 	: mSpeed(1.0f)
+	, mHp(100)
 {
-	SetPos({ 900.0f, 700.0f });
-	SetScale({ 3.0f, 3.0f });
+	SetPos({ 900.0f, 100.0f });
+	SetPlayerPos({ 900.0f, 100.0f });
+	SetScale({ 1.0f, 1.0f });
 	mCoff = 0.1f;
 
 	if (pImage == nullptr)
@@ -26,8 +30,9 @@ Nmy::Player::Player()
 		pImage = Resources::Load<image>(L"Player", L"..\\Resource\\Image\\link.bmp");
 	}
 
-	mAnimator = new Animator();/*
-	mAnimator->CreateAnimations(L"PlaneIdle", L"..\\Resource\\Animation\\Player\\");*/
+	mAnimator = new Animator();
+	//mAnimator->CreateAnimations(L"..\\Resource\\Animation\\Player\\Idle"
+	//	, L"PlaneIdle");
 
 	mAnimator->CreateAnimation(L"Idle", pImage
 		, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f)
@@ -59,6 +64,9 @@ Nmy::Player::Player()
 	AddComponent(mAnimator);
 	AddComponent(new Collider());
 
+	AddComponent<RigidBody>();
+
+
 	mCoff = 0.1f;
 	mMissileDir = Vector2::One;
 
@@ -79,18 +87,24 @@ void Nmy::Player::Tick()
 	if (KEY_PRESSED(eKeyCode::W))
 	{
 		pos.y -= 200.0f * Time::DeltaTime();
+		//GetComponent<RigidBody>()->AddForce(Vector2(0.0f, -1000.0f));
 	}
 	if (KEY_PRESSED(eKeyCode::S))
 	{
 		pos.y += 200.0f * Time::DeltaTime();
+		//GetComponent<RigidBody>()->AddForce(Vector2(0.0f, 1000.0f));
 	}
 	if (KEY_PRESSED(eKeyCode::A))
 	{
 		pos.x -= 200.0f * Time::DeltaTime();
+		//GetComponent<RigidBody>()->AddForce(Vector2(-1000.0f, 0.0f));
 	}
 	if (KEY_PRESSED(eKeyCode::D))
 	{
 		pos.x += 200.0f * Time::DeltaTime();
+		// 돌진 계산
+		//GetComponent<RigidBody>()->AddForce(Vector2(3000.0f, 0.0f));
+		//GetComponent<RigidBody>()->AddForce(Vector2(1000.0f, 0.0f));
 	}
 
 	if (KEY_DOWN(eKeyCode::W))
@@ -128,6 +142,20 @@ void Nmy::Player::Tick()
 	}
 
 
+	if (KEY_DOWN(eKeyCode::SPACE))
+	{
+		RigidBody* rigidy = GetComponent<RigidBody>();
+		if (rigidy->GetGround())
+		{
+			Vector2 velocity = rigidy->GetVelocity();
+			velocity.y = -500.0f;
+
+			rigidy->SetVelocity(velocity);
+			rigidy->SetGround(false);
+		}
+
+	}
+
 	if (KEY_PRESSED(eKeyCode::LBTN))
 	{
 
@@ -154,6 +182,11 @@ void Nmy::Player::Tick()
 
 	}
 
+	if (KEY_DOWN(eKeyCode::K))
+	{
+
+	}
+
 	if (KEY_DOWN(eKeyCode::I))
 	{
 		BackPack* backpack = new BackPack();
@@ -170,6 +203,7 @@ void Nmy::Player::Render(HDC hdc)
 
 void Nmy::Player::OnCollisionEnter(Collider* other)
 {
+
 }
 
 void Nmy::Player::OnCollisionStay(Collider* other)

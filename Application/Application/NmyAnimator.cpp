@@ -118,7 +118,7 @@ namespace Nmy
 		mEvents.insert(std::make_pair(name, events));
 	}
 
-	void Animator::CreateAnimations(const std::wstring& name, const std::wstring& path
+	void Animator::CreateAnimations(const std::wstring& path , const std::wstring& name
 	, Vector2 offset , float duration)
 	{
 
@@ -132,16 +132,10 @@ namespace Nmy
 		{
 			std::wstring filename = p.path().filename();
 
-			std::wstring keyName = path;
-			auto const pos = keyName.find_last_of(L"\\");
-			std::wstring last = keyName.substr(pos + 1, keyName.length());
-			keyName = keyName.substr(0, pos);
-
-
+			std::wstring keyString = CreateAnimationKey(path);
 			std::wstring fullName = path  + L"\\" + filename;
 
-
-			image* reimage = Resources::Load<image>(filename, fullName); 
+			image* reimage = Resources::Load<image>(filename, fullName);
 			images.push_back(reimage);
 
 			if (width < reimage->GetWidth())
@@ -165,6 +159,25 @@ namespace Nmy
 
 		CreateAnimation(name, mSPriteSheet, Vector2::Zero, Vector2(width, height)
 			, offset, filecount, duration);
+	}
+
+	std::wstring Animator::CreateAnimationKey(std::wstring path)
+	{
+
+		std::wstring keyString = path;
+		// 애니메이션 폴더 이름 추출
+		UINT pos = keyString.find_last_of(L"\\");
+		std::wstring tail = keyString.substr(pos + 1, keyString.length());
+		keyString = keyString.substr(0, pos);
+
+
+		// 애니메이션 오브젝트이름 추출
+		pos = keyString.find_last_of(L"\\");
+		std::wstring head = keyString.substr(pos + 1, keyString.length());
+		keyString = keyString.substr(0, pos);
+		keyString = head + tail;
+
+		return keyString;
 	}
 
 

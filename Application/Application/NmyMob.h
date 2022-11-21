@@ -14,31 +14,28 @@ namespace Nmy
 		Mob();
 		~Mob();
 
-		virtual void Initialize();
-		virtual void Tick();
-		virtual void Render(HDC hdc);
+		virtual void Tick() override;
+		virtual void Render(HDC hdc) override;
 
-		virtual void OnCollisionEnter(Collider* other);
-		virtual void OnCollisionStay(Collider* other);
-		virtual void OnCollisionExit(Collider* other);
+		virtual void OnCollisionEnter(Collider* other) override;
+		virtual void OnCollisionStay(Collider* other) override;
+		virtual void OnCollisionExit(Collider* other) override;
 
 		void Death() { mDead = true; }
 		bool IsDeath() { return mDead; }
-		void SetDeathTime(float time);
+		void SetDeathTime(float time) { mDeathTime = time; }
 		float GetHp() { return mHp; }
 
 
 	private:
 		float mSpeed;
 		float mHp;
+		float mDeathTime;
 		bool mDead;
 		image* mImage;
 
 
 		Animator* mAnimator;
-		std::wstring mMobPath[5];
-		std::wstring Amotion[5];
-		std::wstring mMobSelect;
 
 		
 	};

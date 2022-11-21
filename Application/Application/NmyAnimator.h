@@ -47,8 +47,9 @@ namespace Nmy
 		void CreateAnimation(const std::wstring& name, image* pimage
 			, Vector2 leftTop, Vector2 size, Vector2 offset
 			,  UINT spriteLength , float duration , bool bAffEctedCamera = true );
-		void CreateAnimations(const std::wstring& name, const std::wstring& path, Vector2 offset = Vector2::Zero , float duration = 0.1f);
+		void CreateAnimations(const std::wstring& path, const std::wstring& name, Vector2 offset = Vector2::Zero , float duration = 0.1f);
 
+		std::wstring CreateAnimationKey(std::wstring path);
 
 		void Play(const std::wstring& name, bool bLoop = false);
 

@@ -4,6 +4,10 @@
 
 namespace Nmy
 {
+
+
+	Vector2 Actor::nPos = {0.0f, 0.0f};
+
 	Actor::Actor()
 		: mPos{ 0.0f , 0.0f }
 		, mScale{ 1.0f , 1.0f }

@@ -3,6 +3,7 @@
 #include "MyResources.h"
 #include "NmyCollider.h"
 #include "Player.h"
+#include "NmyCamera.h"
 
 namespace Nmy
 {
@@ -10,18 +11,17 @@ namespace Nmy
 		: mHp(100.0f)
 		, mSpeed(1.0f)
 	{
+		SetName(L"Mush");
+		SetPos({800 , 450});
+		SetScale({ 1.0f, 1.0f });
 
-		Amotion[0] = L"Idle";
-		Amotion[1] = L"hit";
-		Amotion[2] = L"Jump";
-		Amotion[3] = L"Move";
-		Amotion[4] = L"die";
+		mAnimator = new Animator();
+		mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Mob\\1210102\\Idle"
+			, L"MushIdle");
+		mAnimator->Play(L"MushIdle", true);
 
-		for (size_t i = 0; i < 5; i++)
-		{
-			mMobPath[i] = L"..\\Resource\\MapleSprite\\Mob\\1210102\\" + Amotion[i];
-		}
-
+		AddComponent(mAnimator);
+		AddComponent(new Collider());
 	}
 	Mob::~Mob()
 	{
@@ -29,23 +29,15 @@ namespace Nmy
 			
 
 	}
-	void Mob::Initialize()
-	{
-		SetPos({800 , 450});
-
-		mAnimator->CreateAnimations(mMobPath[0], L"MushIdle");
-		mAnimator->Play(L"MushIdle");
-
-		AddComponent(new Collider());
-	}
 
 	void Mob::Tick()
 	{
-
+		Actor::Tick();
 	}
 
 	void Mob::Render(HDC hdc)
 	{
+		Actor::Render(hdc);
 	}
 
 	void Mob::OnCollisionEnter(Collider* other)
@@ -57,10 +49,6 @@ namespace Nmy
 	}
 
 	void Mob::OnCollisionExit(Collider* other)
-	{
-	}
-
-	void Mob::SetDeathTime(float time)
 	{
 	}
 

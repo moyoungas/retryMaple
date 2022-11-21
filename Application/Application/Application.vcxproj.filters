@@ -4,9 +4,6 @@
     <Filter Include="main">
       <UniqueIdentifier>{551cc174-14a2-46a4-a9c8-d8030849624b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine">
-      <UniqueIdentifier>{e8eff03f-3922-4b4d-b0fe-b1349ad9ab39}</UniqueIdentifier>
-    </Filter>
     <Filter Include="main\리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -63,6 +60,21 @@
     </Filter>
     <Filter Include="Actor\Game">
       <UniqueIdentifier>{b3fd5a34-8588-409b-88a0-b393bbc43d9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{6fb7b49d-6d61-4d43-81cd-ccf8453f33e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RigidBody">
+      <UniqueIdentifier>{0d7ce5f2-52d1-41f7-9db2-01c8e55cf10e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{f893c772-9d6a-4c17-8613-d449c83045e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Base">
+      <UniqueIdentifier>{cfdabc7e-e1dc-4765-9bd8-d19162a2bde6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{546d4a66-73c4-4eaa-853f-1e8a18f9b959}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +192,36 @@
     <ClInclude Include="ymTile.h">
       <Filter>Actor\Tile</Filter>
     </ClInclude>
+    <ClInclude Include="ymMap.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="ymRigidBody.h">
+      <Filter>RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="ymGround.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="ymUIManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="UIBase.h">
+      <Filter>UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ymPanel.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ymHUD.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ymButton.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ymSoundManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ymSound.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Application.rc">
@@ -293,6 +335,36 @@
     </ClCompile>
     <ClCompile Include="ymTile.cpp">
       <Filter>Actor\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="ymMap.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="ymRigidBody.cpp">
+      <Filter>RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="ymGround.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="ymUIManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UIBase.cpp">
+      <Filter>UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ymPanel.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ymHUD.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ymButton.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ymSoundManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ymSound.cpp">
+      <Filter>Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

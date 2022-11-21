@@ -8,6 +8,13 @@
 #include "NmyBacKPack.h"
 #include "NmyObject.h"
 #include "myNewApplication.h"
+#include "NmyMob.h"
+#include "ymMap.h"
+#include "ymRigidBody.h"
+#include "ymGround.h"
+#include "ymUIManager.h"
+#include "ymHUD.h"
+#include "ymButton.h"
 
 Nmy::LogoScene::LogoScene()
 {
@@ -19,10 +26,31 @@ Nmy::LogoScene::~LogoScene()
 
 void Nmy::LogoScene::Initialize()
 {
+	//BGActor* bg = new BGActor();
+	//bg->SetImage(L"backimg", L"backGroundimg.bmp", L"..\\Resource\\MapleSprite\\back\\");
+	//bg->Initialize();
+	//AddGameActor(bg, eColliderLayer::BackGround);
 
-	Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
-	mons[0] = Nmy::obj::Instantiate<Monster>(eColliderLayer::Monster);
-	mons[1] = Nmy::obj::Instantiate<Monster>(Vector2{ 1600 / 2 + 130, 300 / 2 }, eColliderLayer::Monster);
+
+	//Map* map = new Map();
+	//map->SetImage(L"mapimg", L"PMAP1.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+	//map->Initialize();
+	//AddGameActor(map, eColliderLayer::Map);
+
+
+
+	Player* mplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
+	Ground* ground = Nmy::obj::Instantiate<Ground>(eColliderLayer::Ground);
+	ground->SetPos(Vector2(700.0f, 700.0f));
+
+	Nmy::obj::Instantiate<Mob>(eColliderLayer::Monster);
+
+
+
+	UIManager::Push(eUIType::Inventory);
+	//Button* hp = UIManager::GetUiInstant<Button>(eUIType::HP);
+	HUD* hp = UIManager::GetUiInstant<HUD>(eUIType::MP);
+	hp->SetTarget(mplayer);
 }
 
 void Nmy::LogoScene::Tick()
@@ -31,6 +59,12 @@ void Nmy::LogoScene::Tick()
 	// 부모것을 호출하고 자기것을 작업하자
 	// 유니티에선 막아둠
 	Scene::Tick();
+
+
+
+
+
+
 
 	if (KEY_DOWN(eKeyCode::N))
 	{
@@ -53,6 +87,7 @@ void Nmy::LogoScene::Enter()
 
 	ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player, true);
 	ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player_Projecttile, true);
+	ColliderManager::SetLayer(eColliderLayer::Ground, eColliderLayer::Player, true);
 
 
 }

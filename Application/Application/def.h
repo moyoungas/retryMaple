@@ -39,6 +39,7 @@ enum class eComponentType
 {
 	Animator,
 	Collider,
+	RigidBody,
 	Sound,
 	END,
 
@@ -51,15 +52,26 @@ enum class eColliderLayer
 	Defalut,
 	BackGround,
 	Tile,
+	Map,
 	Player,
 	Player_Projecttile,
 	Monster,
 	Monster_Projecttile,
-
+	Ground,
 	BACKPACK,
 
 	UI = _COLLIDER_LAYER - 1,
 	End = 16,
+};
+
+enum class eUIType
+{
+	HP,
+	MP,
+	Inventory,
+	OPTION,
+	SHOP,
+	END,
 };
 
 enum class CameraEffect

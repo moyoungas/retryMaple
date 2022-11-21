@@ -17,6 +17,10 @@ namespace Nmy
 		HDC GetDc() { return mhdc; }
 		UINT GetWidth() { return mWidth; }
 		UINT GetHeight() { return mheight; }
+
+		Pixel GetPixel(int x, int y);
+		void SetPixel(int x, int y, Pixel pixel);
+
 	private:
 		HBITMAP	mBitmap;
 		HDC mhdc;

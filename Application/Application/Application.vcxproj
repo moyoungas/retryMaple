@@ -165,8 +165,18 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="ToolScene.h" />
+    <ClInclude Include="UIBase.h" />
+    <ClInclude Include="ymButton.h" />
+    <ClInclude Include="ymGround.h" />
+    <ClInclude Include="ymHUD.h" />
+    <ClInclude Include="ymMap.h" />
+    <ClInclude Include="ymPanel.h" />
+    <ClInclude Include="ymRigidBody.h" />
+    <ClInclude Include="ymSound.h" />
+    <ClInclude Include="ymSoundManager.h" />
     <ClInclude Include="ymTile.h" />
     <ClInclude Include="ymTilePalette.h" />
+    <ClInclude Include="ymUIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
@@ -200,8 +210,18 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="ToolScene.cpp" />
+    <ClCompile Include="UIBase.cpp" />
+    <ClCompile Include="ymButton.cpp" />
+    <ClCompile Include="ymGround.cpp" />
+    <ClCompile Include="ymHUD.cpp" />
+    <ClCompile Include="ymMap.cpp" />
+    <ClCompile Include="ymPanel.cpp" />
+    <ClCompile Include="ymRigidBody.cpp" />
+    <ClCompile Include="ymSound.cpp" />
+    <ClCompile Include="ymSoundManager.cpp" />
     <ClCompile Include="ymTile.cpp" />
     <ClCompile Include="ymTilePalette.cpp" />
+    <ClCompile Include="ymUIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Application.rc" />

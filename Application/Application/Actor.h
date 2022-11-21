@@ -23,6 +23,9 @@ namespace Nmy
 		virtual void OnCollisionStay(Collider* other);
 		virtual void OnCollisionExit(Collider* other);
 
+		static Vector2 GetPlayerPos() { return nPos; }
+		static void SetPlayerPos(Vector2 pos) { nPos = pos; }
+
 
 		void SetPos(Vector2 pos) { mPos = pos; }
 		Vector2 GetPos() { return mPos; }
@@ -37,6 +40,14 @@ namespace Nmy
 		void AddComponent(Component* component);
 
 		template <typename T>
+		__forceinline T* AddComponent()
+		{
+			T* comp = new T();
+			Actor::AddComponent(comp);
+			return comp;
+		}
+
+		template <typename T>
 		__forceinline T* GetComponent()
 		{
 			T* component;
@@ -49,10 +60,14 @@ namespace Nmy
 				return nullptr;
 		}
 
+
+
 		void DeathLoop();
 
 	private:
 		std::vector<Component*> mComponents;
+
+		static Vector2 nPos;
 
 		Vector2 mPos;
 		Vector2 mScale;

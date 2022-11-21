@@ -6,7 +6,8 @@
 #include "MyResources.h"
 #include "ColliderManager.h"
 #include "NmyCamera.h"
-
+#include "ymUIManager.h"
+#include "ymSoundManager.h"
 #include "Application.h"
 
 namespace Nmy
@@ -20,9 +21,11 @@ namespace Nmy
 
 		Time::Initialize();
 		Input::Initialize();
-		Camera::Initialize();
-
+		UIManager::Initialize();
 		SceneManager::Initialize();
+		Camera::Initialize();
+		SoundManager::Initialize();
+
 		//DropManager::Initialize();
 	}
 
@@ -38,10 +41,11 @@ namespace Nmy
 		Time::Tick();
 		Input::Tick();
 
-		Camera::Tick();
-
 		SceneManager::Tick();
 		ColliderManager::Tick();
+
+		UIManager::Tick();
+		Camera::Tick();
 
 		HBRUSH hPrevBrush = (HBRUSH)SelectObject(mWindowdata.backBuffer, mBrush[(UINT)eBrushColor::Gray]);
 		// clear
@@ -50,6 +54,7 @@ namespace Nmy
 		SelectObject(mWindowdata.backBuffer, hPrevBrush);
 
 		SceneManager::Render(mWindowdata.backBuffer);
+		UIManager::Render(mWindowdata.backBuffer);
 		Camera::Render(mWindowdata.backBuffer);
 		Input::Render(mWindowdata.backBuffer);
 		Time::Render(mWindowdata.backBuffer);
@@ -58,9 +63,7 @@ namespace Nmy
 		BitBlt(mWindowdata.hdc, 0, 0, mWindowdata.width, mWindowdata.height
 			,mWindowdata.backBuffer, 0,0, SRCCOPY);
 
-
 		// actor ªË¡¶
-
 		SceneManager::DestroyActor();
 	}
 
@@ -73,6 +76,7 @@ namespace Nmy
 	{
 		SceneManager::Release();
 		Resources::Release();
+		UIManager::Release();
 		ReleaseDC(mWindowdata.hWnd, mWindowdata.hdc);
 		ReleaseDC(mWindowdata.hWnd, mWindowdata.backBuffer);
 	}

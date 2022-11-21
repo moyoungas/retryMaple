@@ -16,7 +16,7 @@ namespace Nmy
 		virtual void Tick() override;
 		virtual void Render(HDC hdc) override;
 
-		void SetImage(const std::wstring& key, const std::wstring& imageName);
+		void SetImage(const std::wstring& key, const std::wstring& fileName, std::wstring path = L"");
 
 	private:
 		image* pImage;
