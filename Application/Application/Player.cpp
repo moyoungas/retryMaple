@@ -65,7 +65,7 @@ Nmy::Player::Player()
 	AddComponent(new Collider());
 
 	AddComponent<RigidBody>();
-
+	Camera::SetTarget(this);
 
 	mCoff = 0.1f;
 	mMissileDir = Vector2::One;

@@ -2,6 +2,7 @@
 #include "MyResources.h"
 #include "Nmyimage.h"
 #include "Player.h"
+#include "NmyCamera.h"
 #include "ymRigidBody.h"
 
 
@@ -14,6 +15,8 @@ namespace Nmy
 	Map::Map()
 		: pImage(nullptr)
 	{
+		SetPos(Vector2::Zero);
+		SetScale(Vector2::One);
 	}
 
 	Map::~Map()
@@ -28,9 +31,9 @@ namespace Nmy
 	{
 		Actor::Tick();
 
-		Vector2 playerPos = Player::GetPlayerPos();
+		//Vector2 playerPos = Player::GetPlayerPos();
 
-		//PixelImage->GetPixel(playerPos);
+		////PixelImage->GetPixel(playerPos);
 
 
 
@@ -45,13 +48,13 @@ namespace Nmy
 		Vector2 pos = GetPos();
 		Vector2 mScale = GetScale();
 
-		Vector2 finalPos = pos;
+		Vector2 finalPos = Camera::CalculatePos(pos);
 
 		Vector2 rect;
 		rect.x = pImage->GetWidth() * mScale.x;
 		rect.y = pImage->GetHeight() * mScale.y;
 
-		TransparentBlt(hdc,0, 0
+		TransparentBlt(hdc, finalPos.x, finalPos.y
 			, rect.x, rect.y, pImage->GetDc()
 			, 0, 0, pImage->GetWidth(), pImage->GetHeight()
 			, RGB(255, 0, 255));

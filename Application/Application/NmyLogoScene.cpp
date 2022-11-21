@@ -26,25 +26,24 @@ Nmy::LogoScene::~LogoScene()
 
 void Nmy::LogoScene::Initialize()
 {
-	//BGActor* bg = new BGActor();
-	//bg->SetImage(L"backimg", L"backGroundimg.bmp", L"..\\Resource\\MapleSprite\\back\\");
-	//bg->Initialize();
-	//AddGameActor(bg, eColliderLayer::BackGround);
+	BGActor* bg = new BGActor();
+	bg->SetImage(L"backimg", L"backGroundimg.bmp", L"..\\Resource\\MapleSprite\\back\\");
+	bg->Initialize();
+	AddGameActor(bg, eColliderLayer::BackGround);
 
 
-	//Map* map = new Map();
-	//map->SetImage(L"mapimg", L"PMAP1.bmp", L"..\\Resource\\MapleSprite\\Map\\");
-	//map->Initialize();
-	//AddGameActor(map, eColliderLayer::Map);
+	Map* map = new Map();
+	map->SetImage(L"mapimg", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+	map->Initialize();
+	AddGameActor(map, eColliderLayer::Map);
 
 
 
 	Player* mplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
 	Mob* mMob = Nmy::obj::Instantiate<Mob>(eColliderLayer::Mob);
+
 	Ground* ground = Nmy::obj::Instantiate<Ground>(eColliderLayer::Ground);
-	ground->SetPos(Vector2(700.0f, 700.0f));
-
-
+	ground->SetPos(Vector2(700.0f, 1100.0f));
 
 
 	UIManager::Push(eUIType::Inventory);
@@ -59,11 +58,6 @@ void Nmy::LogoScene::Tick()
 	// 부모것을 호출하고 자기것을 작업하자
 	// 유니티에선 막아둠
 	Scene::Tick();
-
-
-
-
-
 
 
 	if (KEY_DOWN(eKeyCode::N))

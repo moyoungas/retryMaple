@@ -32,7 +32,7 @@ namespace Nmy
 		collider->SetScale(Scale);
 
 		AddComponent(collider);
-		AddComponent<RigidBody>();
+		//AddComponent<RigidBody>();
 
 	}
 	Mob::~Mob()

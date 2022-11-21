@@ -1,7 +1,7 @@
 #include "NmyBGActor.h"
 #include "MyResources.h"
 #include "Nmyimage.h"
-
+#include "NmyCamera.h"
 namespace Nmy
 {
 	BGActor::BGActor()
