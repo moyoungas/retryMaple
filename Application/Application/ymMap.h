@@ -21,6 +21,8 @@ namespace Nmy
 		Vector2 GetImageHeight();
 
 	private:
+		Vector2 PlayerPos;
+		Player* maPlayer;
 		Pixel* Imagepixel;
 		image* pImage;
 		image* PixelImage;

@@ -4,7 +4,8 @@
 #include "Player.h"
 #include "NmyCamera.h"
 #include "ymRigidBody.h"
-
+#include "SceneManager.h"
+#include "NmyLogoScene.h"
 
 namespace Nmy
 {
@@ -18,6 +19,15 @@ namespace Nmy
 	{
 		SetPos(Vector2::Zero);
 		SetScale(Vector2::One);
+
+		if (PixelImage == nullptr)
+		{
+			PixelImage = Resources::Load<image>(L"BackUp", L"..\\Resource\\MapleSprite\\Map\\StartMapPixel.bmp");
+		}
+
+		Scene* playScene = SceneManager::GetPlayScene();
+		maPlayer = dynamic_cast<LogoScene*>(playScene)->GetPlayer();
+
 	}
 
 	Map::~Map()
@@ -27,13 +37,6 @@ namespace Nmy
 	void Map::Initialize()
 	{
 
-		if (PixelImage == nullptr)
-		{
-			PixelImage = Resources::Load<image>(L"BackUp", L"..\\Resource\\MapleSprite\\Map\\StartMapPixel.bmp");
-		}
-
-
-		
 	}
 
 	void Map::Tick()
@@ -43,6 +46,9 @@ namespace Nmy
 		//Vector2 playerPos = Player::GetPlayerPos();
 
 		////PixelImage->GetPixel(playerPos);
+
+		PlayerPos = GetPos();
+		//PixelImage->GetPixel(PlayerPos.x, PlayerPos.y);
 
 
 

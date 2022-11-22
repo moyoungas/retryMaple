@@ -64,13 +64,16 @@ namespace Nmy
 
 		void DeathLoop();
 
+	protected:
+
+
 	private:
 		std::vector<Component*> mComponents;
 
-		static Vector2 nPos;
-
 		Vector2 mPos;
+
 		Vector2 mScale;
+		static Vector2 nPos;
 
 		bool mDead;
 		float mDeathTime;

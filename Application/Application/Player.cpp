@@ -198,6 +198,26 @@ void Nmy::Player::Tick()
 
 void Nmy::Player::Render(HDC hdc)
 {
+
+
+	HPEN redPen = CreatePen(PS_SOLID, 2, RGB(0, 0, 255));
+	HPEN oldpen = NULL;
+
+	Pen pen(hdc);
+
+
+	oldpen = (HPEN)SelectObject(hdc, redPen);
+
+	Vector2 mPos = Camera::CalculatePos(GetPos());
+
+	// 스케일을 길이로 써버림
+	Rectangle(hdc, mPos.x
+		, mPos.y
+		, mPos.x +  50.0f
+		, mPos.y + 50.0f);
+
+
+
 	Actor::Render(hdc);
 }
 

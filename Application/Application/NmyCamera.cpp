@@ -24,6 +24,8 @@ namespace Nmy
 	float Camera::mAlphaTime = 0.0f;
 	float Camera::mCuttonAlpha = 0.0f;
 	float Camera::mEndTime = 5.0f;
+	float Camera::prevY = 0.0f;
+
 
 
 	void Camera::Initialize()
@@ -44,20 +46,49 @@ namespace Nmy
 
 
 
+
 		if (mTarget != nullptr)
 		{
 			mLookPosition = mTarget->GetPos();
+			mCameraLimited = LogoScene::GetmLimited() - mTarget->GetPos();
+		}
+		
+
+		//if (mLookPosition.x < 800 || mLookPosition.x > 1460)
+		//{
+		//	return;
+		//}
+		//if (mLookPosition.y > 1350)
+		//	return;
+
+		if (mCameraLimited.x  > 1460.0f || mCameraLimited.x < 800)
+		{
+			if (mLookPosition.y != prevY)
+			{
+
+
+			}
+			else
+			{
+				return;
+			}
+
+		}
+		if (mCameraLimited.y < 470)
+		{
+			if (true)
+			{
+
+			}
+
+			return;
 		}
 
 
-		if (mLookPosition.x < 800 || mLookPosition.x > 1460)
-		{
-			return;
-		}
-		if (mLookPosition.y > 1350)
-		{
-			return;
-		}
+		//if (mLookPosition.y > 1350)
+		//{
+		//	return;
+		//}
 
 
 
@@ -94,8 +125,8 @@ namespace Nmy
 		}
 
 
-		
 		mDistance = mLookPosition - (mResolution / 2.0f);
+		prevY = mLookPosition.y;
 
 	}
 
@@ -103,26 +134,26 @@ namespace Nmy
 	{
 		//if (mCuttonAlpha <= 0.0f)
 		//	return;
-		HBRUSH gray = NewApplication::Getinstance().GetBrush(eBrushColor::Transparent);
-		Brush brush(hdc, gray);
+		//HBRUSH gray = NewApplication::Getinstance().GetBrush(eBrushColor::Transparent);
+		//Brush brush(hdc, gray);
 
-		HPEN greenPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
-		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-		HPEN oldpen = NULL;
+		//HPEN greenPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
+		//HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+		//HPEN oldpen = NULL;
 
-		Pen pen(hdc);
+		//Pen pen(hdc);
 
-		Vector2 mPos = Camera::CalculatePos(mTarget->GetPos());
+		//Vector2 mPos = Camera::CalculatePos(mTarget->GetPos());
 
-		// 스케일을 길이로 써버림
-		Rectangle(hdc, mPos.x
-			, mPos.y
-			, mDistance.x
-			, mDistance.y);
+		//// 스케일을 길이로 써버림
+		//Rectangle(hdc, mPos.x
+		//	, mPos.y
+		//	, mDistance.x
+		//	, mDistance.y);
 
-		SelectObject(hdc, oldpen);
-		DeleteObject(redPen);
-		DeleteObject(greenPen);
+		//SelectObject(hdc, oldpen);
+		//DeleteObject(redPen);
+		//DeleteObject(greenPen);
 
 	}
 

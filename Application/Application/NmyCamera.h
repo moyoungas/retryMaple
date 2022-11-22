@@ -30,6 +30,7 @@ namespace Nmy
 
 		Vector2 mLimitedA;
 
+		static float prevY;
 
 
 		static CameraEffect mEffect;

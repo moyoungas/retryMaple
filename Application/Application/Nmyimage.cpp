@@ -92,7 +92,7 @@ namespace Nmy
 		Pixel* pixel = (Pixel*)mBitmap;
 		pixel += (mWidth * y + x);
 
-		return *pixel;
+		return Pixel(*pixel);
 	}
 
 	void image::SetPixel(int x, int y, Pixel pixel)
