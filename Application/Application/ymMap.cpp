@@ -14,6 +14,7 @@ namespace Nmy
 
 	Map::Map()
 		: pImage(nullptr)
+		, PixelImage(nullptr)
 	{
 		SetPos(Vector2::Zero);
 		SetScale(Vector2::One);
@@ -25,16 +26,23 @@ namespace Nmy
 
 	void Map::Initialize()
 	{
+
+		if (PixelImage == nullptr)
+		{
+			PixelImage = Resources::Load<image>(L"BackUp", L"..\\Resource\\MapleSprite\\Map\\StartMapPixel.bmp");
+		}
+
+
+		
 	}
 
 	void Map::Tick()
 	{
-		Actor::Tick();
 
+		Actor::Tick();
 		//Vector2 playerPos = Player::GetPlayerPos();
 
 		////PixelImage->GetPixel(playerPos);
-
 
 
 
@@ -82,5 +90,22 @@ namespace Nmy
 		}
 
 	}
+
+	Vector2 Map::GetImageWidth()
+	{
+		Vector2 temp;
+		temp.x = pImage->GetWidth();
+		temp.y = pImage->GetHeight();
+
+
+		return temp;
+	}
+
+	Vector2 Map::GetImageHeight()
+	{
+		return Vector2();
+	}
+
+
 
 }

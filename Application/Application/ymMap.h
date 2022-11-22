@@ -17,7 +17,11 @@ namespace Nmy
 
 		void SetImage(const std::wstring& key, const std::wstring& fileName, std::wstring path = L"");
 
+		Vector2 GetImageWidth();
+		Vector2 GetImageHeight();
+
 	private:
+		Pixel* Imagepixel;
 		image* pImage;
 		image* PixelImage;
 	};

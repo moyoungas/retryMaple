@@ -14,7 +14,7 @@ namespace Nmy
 	Ground::Ground()
 	{
 		Collider* collider = AddComponent<Collider>();
-		collider->SetScale(Vector2(600.0f, 10.0f));
+		collider->SetScale(Vector2(1200.0f, 10.0f));
 
 	}
 

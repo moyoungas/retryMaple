@@ -26,6 +26,11 @@ namespace Nmy
 		static Vector2 mLookPosition; // 카메라가 볼 좌표
 		static Vector2 mDistance; // 해상도 중심 좌표와 현재 카메라의 간격 차
 		static Actor* mTarget;
+		static Vector2 mCameraLimited;
+
+		Vector2 mLimitedA;
+
+
 
 		static CameraEffect mEffect;
 		static image* mCutton;		// 검정색 이미지

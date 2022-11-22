@@ -14,7 +14,16 @@
 #include "ymGround.h"
 #include "ymUIManager.h"
 #include "ymHUD.h"
+#include "NmyCamera.h"
 #include "ymButton.h"
+
+
+namespace Nmy
+{
+	Vector2 LogoScene::mLimited;
+
+
+}
 
 Nmy::LogoScene::LogoScene()
 {
@@ -32,18 +41,21 @@ void Nmy::LogoScene::Initialize()
 	AddGameActor(bg, eColliderLayer::BackGround);
 
 
-	Map* map = new Map();
-	map->SetImage(L"mapimg", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
-	map->Initialize();
-	AddGameActor(map, eColliderLayer::Map);
+	Map* mMap = new Map();
+	mMap->SetImage(L"mapimg", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+	mMap->Initialize();
+	AddGameActor(mMap, eColliderLayer::Map);
 
-
+	Vector2 mSaveMap = mMap->GetImageWidth();
+	mLimited = mSaveMap;
 
 	Player* mplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
 	Mob* mMob = Nmy::obj::Instantiate<Mob>(eColliderLayer::Mob);
 
 	Ground* ground = Nmy::obj::Instantiate<Ground>(eColliderLayer::Ground);
-	ground->SetPos(Vector2(700.0f, 1100.0f));
+	Ground* ground2 = Nmy::obj::Instantiate<Ground>(eColliderLayer::Ground);
+	ground->SetPos(Vector2(1100.0f, 1100.0f));
+	ground2->SetPos(Vector2(1000.0f, 1550.0f));
 
 
 	UIManager::Push(eUIType::Inventory);

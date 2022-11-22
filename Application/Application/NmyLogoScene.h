@@ -5,6 +5,7 @@
 namespace Nmy
 {
 	class Monster;
+	class Map;
 
 	class LogoScene : public Scene
 	{
@@ -21,9 +22,13 @@ namespace Nmy
 		virtual void Enter();
 		virtual void Exit();
 
-	private:
-		Monster* mons[2];
+		static Vector2 GetmLimited() { return mLimited; }
 
+
+
+	private:
+		static Vector2 mLimited;
+		Monster* mons[2];
 	};
 
 }
