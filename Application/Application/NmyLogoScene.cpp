@@ -45,7 +45,7 @@ void Nmy::LogoScene::Initialize()
 	Map* mMap = new Map();
 	//mMap->SetImage(L"mapimg", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
 	mMap->SetImage(L"StartMap1", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
-	mMap->SetPixelImage(L"pixel", L"StartMapPixel.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+	mMap->SetPixelImage(L"pixel", L"StartMapTest.bmp", L"..\\Resource\\MapleSprite\\Map\\");
 	mMap->SetPlayer(mplayer);
 	AddGameActor(mMap, eColliderLayer::Map);
 

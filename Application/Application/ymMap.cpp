@@ -24,7 +24,7 @@ namespace Nmy
 
 		if (PixelImage == nullptr)
 		{
-			PixelImage = Resources::Load<image>(L"BackUp", L"..\\Resource\\MapleSprite\\Map\\StartMapPixel.bmp");
+			PixelImage = Resources::Load<image>(L"BackUp", L"..\\Resource\\MapleSprite\\Map\\StartMapTest.bmp");
 		}
 
 	}
@@ -72,6 +72,12 @@ namespace Nmy
 			maPlayer->GetComponent<RigidBody>()->SetGround(true);
 			Vector2 playerPos = maPlayer->GetPos();
 			playerPos.y -= 1.0f;
+			maPlayer->SetPos(playerPos);
+		}
+		else if (pixel.R == 255 && pixel.G == 0 && pixel.B == 0)
+		{
+			Vector2 playerPos = maPlayer->GetPos();
+			playerPos.x += 10.0f;
 			maPlayer->SetPos(playerPos);
 		}
 		else
