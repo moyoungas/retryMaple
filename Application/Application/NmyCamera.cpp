@@ -63,15 +63,8 @@ namespace Nmy
 
 		if (mCameraLimited.x  > 1460.0f || mCameraLimited.x < 800)
 		{
-			if (mLookPosition.y != prevY)
-			{
 
-
-			}
-			else
-			{
 				return;
-			}
 
 		}
 		if (mCameraLimited.y < 470)
@@ -107,22 +100,22 @@ namespace Nmy
 		//	}
 		//}
 
-		if (KEY_PRESSED(eKeyCode::UP))
-		{
-			mLookPosition.y -= 600.0f * Time::DeltaTime();
-		}
-		if (KEY_PRESSED(eKeyCode::DOWN))
-		{
-			mLookPosition.y += 600.0f * Time::DeltaTime();
-		}
-		if (KEY_PRESSED(eKeyCode::LEFT))
-		{
-			mLookPosition.x -= 600.0f * Time::DeltaTime();
-		}
-		if (KEY_PRESSED(eKeyCode::RIGHT))
-		{
-			mLookPosition.x += 600.0f * Time::DeltaTime();
-		}
+		//if (KEY_PRESSED(eKeyCode::UP))
+		//{
+		//	mLookPosition.y -= 600.0f * Time::DeltaTime();
+		//}
+		//if (KEY_PRESSED(eKeyCode::DOWN))
+		//{
+		//	mLookPosition.y += 600.0f * Time::DeltaTime();
+		//}
+		//if (KEY_PRESSED(eKeyCode::LEFT))
+		//{
+		//	mLookPosition.x -= 600.0f * Time::DeltaTime();
+		//}
+		//if (KEY_PRESSED(eKeyCode::RIGHT))
+		//{
+		//	mLookPosition.x += 600.0f * Time::DeltaTime();
+		//}
 
 
 		mDistance = mLookPosition - (mResolution / 2.0f);

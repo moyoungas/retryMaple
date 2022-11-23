@@ -25,6 +25,7 @@ namespace Nmy
 		int GetHp() { return mHp; }
 
 	private:
+		bool isJump;
 		float mCoff;
 		float mSpeed;
 		float mDmg;

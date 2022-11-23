@@ -40,22 +40,20 @@ void Nmy::LogoScene::Initialize()
 	bg->Initialize();
 	AddGameActor(bg, eColliderLayer::BackGround);
 
+	Player* mplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
 
 	Map* mMap = new Map();
-	mMap->SetImage(L"mapimg", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
-	mMap->Initialize();
+	//mMap->SetImage(L"mapimg", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+	mMap->SetImage(L"StartMap1", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+	mMap->SetPixelImage(L"pixel", L"StartMapPixel.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+	mMap->SetPlayer(mplayer);
 	AddGameActor(mMap, eColliderLayer::Map);
 
-	Vector2 mSaveMap = mMap->GetImageWidth();
+	Vector2 mSaveMap = mMap->GetImageVolume();
 	mLimited = mSaveMap;
 
-	Player* mplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
 	Mob* mMob = Nmy::obj::Instantiate<Mob>(eColliderLayer::Mob);
 
-	Ground* ground = Nmy::obj::Instantiate<Ground>(eColliderLayer::Ground);
-	Ground* ground2 = Nmy::obj::Instantiate<Ground>(eColliderLayer::Ground);
-	ground->SetPos(Vector2(1100.0f, 1100.0f));
-	ground2->SetPos(Vector2(1000.0f, 1550.0f));
 
 
 	UIManager::Push(eUIType::Inventory);

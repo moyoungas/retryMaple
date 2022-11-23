@@ -82,17 +82,19 @@ namespace Nmy
 		return S_OK;
 	}
 
-	Pixel image::GetPixel(int x, int y)
+	Pixel image::GetPixelImage(int x, int y)
 	{
 		// 비트맵 좌표는 좌측하단이 0,0
 		// 윈도우 좌표처럼 사용하기 위해
 		// 역수 시켜버림
-		y = mheight - (y + 1);
+		//y = mheight - (y + 1);
 
-		Pixel* pixel = (Pixel*)mBitmap;
-		pixel += (mWidth * y + x);
+		//Pixel* pixel = (Pixel*)mBitmap;
+		//pixel += (mWidth * y + x);
 
-		return Pixel(*pixel);
+		COLORREF rgba = GetPixel(mhdc, x, y);
+
+		return Pixel(rgba);
 	}
 
 	void image::SetPixel(int x, int y, Pixel pixel)

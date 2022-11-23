@@ -16,6 +16,7 @@
 Nmy::Player::Player() 
 	: mSpeed(1.0f)
 	, mHp(100)
+	, isJump(false)
 {
 	SetPos({ 900.0f, 100.0f });
 	SetPlayerPos({ 900.0f, 100.0f });
@@ -62,7 +63,24 @@ Nmy::Player::Player()
 	mAnimator->GetCompleteEvents(L"MoveRight") = std::bind(&Player::WalkComplete, this);
 
 	AddComponent(mAnimator);
-	AddComponent(new Collider());
+
+	Collider* coliider = new Collider();
+	AddComponent(coliider);
+
+	coliider->SetOffset(Vector2(0.0f, 50.0f));
+	coliider->SetScale(Vector2(10.0f, 10.0f));
+
+	Collider* coliider2 = new Collider();
+	AddComponent(coliider2);
+
+	coliider2->SetOffset(Vector2(50.0f, 0.0f));
+	coliider2->SetScale(Vector2(10.0f, 10.0f));
+
+	Collider* coliider3 = new Collider();
+	AddComponent(coliider3);
+
+	coliider3->SetOffset(Vector2(-20.0f, 0.0f));
+	coliider3->SetScale(Vector2(10.0f, 10.0f));
 
 	AddComponent<RigidBody>();
 	Camera::SetTarget(this);
@@ -144,12 +162,13 @@ void Nmy::Player::Tick()
 
 	if (KEY_DOWN(eKeyCode::SPACE))
 	{
+
 		RigidBody* rigidy = GetComponent<RigidBody>();
+		Vector2 velocity = rigidy->GetVelocity();
+		
 		if (rigidy->GetGround())
 		{
-			Vector2 velocity = rigidy->GetVelocity();
 			velocity.y = -500.0f;
-
 			rigidy->SetVelocity(velocity);
 			rigidy->SetGround(false);
 		}
@@ -199,22 +218,6 @@ void Nmy::Player::Tick()
 void Nmy::Player::Render(HDC hdc)
 {
 
-
-	HPEN redPen = CreatePen(PS_SOLID, 2, RGB(0, 0, 255));
-	HPEN oldpen = NULL;
-
-	Pen pen(hdc);
-
-
-	oldpen = (HPEN)SelectObject(hdc, redPen);
-
-	Vector2 mPos = Camera::CalculatePos(GetPos());
-
-	// 스케일을 길이로 써버림
-	Rectangle(hdc, mPos.x
-		, mPos.y
-		, mPos.x +  50.0f
-		, mPos.y + 50.0f);
 
 
 

@@ -18,7 +18,7 @@ namespace Nmy
 		UINT GetWidth() { return mWidth; }
 		UINT GetHeight() { return mheight; }
 
-		Pixel GetPixel(int x, int y);
+		Pixel GetPixelImage(int x, int y);
 		void SetPixel(int x, int y, Pixel pixel);
 
 	private:

@@ -5,6 +5,8 @@
 namespace Nmy
 {
 	class image;
+	class Player;
+
 	class Map : public Actor
 	{
 	public:
@@ -16,14 +18,15 @@ namespace Nmy
 		virtual void Render(HDC hdc) override;
 
 		void SetImage(const std::wstring& key, const std::wstring& fileName, std::wstring path = L"");
+		void SetPixelImage(const std::wstring& key, const std::wstring& fileName, std::wstring path = L"");
 
-		Vector2 GetImageWidth();
-		Vector2 GetImageHeight();
+		Vector2 GetImageVolume();
+		void SetPlayer(Player* player) { maPlayer = player; }
+
 
 	private:
 		Vector2 PlayerPos;
 		Player* maPlayer;
-		Pixel* Imagepixel;
 		image* pImage;
 		image* PixelImage;
 	};

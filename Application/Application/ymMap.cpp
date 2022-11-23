@@ -6,6 +6,8 @@
 #include "ymRigidBody.h"
 #include "SceneManager.h"
 #include "NmyLogoScene.h"
+#include "ymRigidBody.h"
+#include "NmyInput.h"
 
 namespace Nmy
 {
@@ -24,9 +26,6 @@ namespace Nmy
 		{
 			PixelImage = Resources::Load<image>(L"BackUp", L"..\\Resource\\MapleSprite\\Map\\StartMapPixel.bmp");
 		}
-
-		Scene* playScene = SceneManager::GetPlayScene();
-		maPlayer = dynamic_cast<LogoScene*>(playScene)->GetPlayer();
 
 	}
 
@@ -47,18 +46,55 @@ namespace Nmy
 
 		////PixelImage->GetPixel(playerPos);
 
-		PlayerPos = GetPos();
-		//PixelImage->GetPixel(PlayerPos.x, PlayerPos.y);
+		if (maPlayer == nullptr)
+		{
+			return;
+		}
 
+		PlayerPos = maPlayer->GetPos();
+		Pixel pixel = PixelImage->GetPixelImage(PlayerPos.x, PlayerPos.y + 50.0f);
 
+		if (pixel.R == 0 && pixel.G == 0 && pixel.B == 255)
+		{
+			if (KEY_DOWN(eKeyCode::SPACE) && KEY_DOWN(eKeyCode::DOWN))
+			{
+				if (pixel.R == 0 && pixel.G == 0 && pixel.B == 255)
+					maPlayer->GetComponent<RigidBody>()->SetGround(false);
+			}
+
+			maPlayer->GetComponent<RigidBody>()->SetGround(true);
+			Vector2 playerPos = maPlayer->GetPos();
+			playerPos.y -= 1.0f;
+			maPlayer->SetPos(playerPos);
+		}
+		else if (pixel.R == 255 && pixel.G == 0 && pixel.B == 255)
+		{
+			maPlayer->GetComponent<RigidBody>()->SetGround(true);
+			Vector2 playerPos = maPlayer->GetPos();
+			playerPos.y -= 1.0f;
+			maPlayer->SetPos(playerPos);
+		}
+		else
+		{
+			maPlayer->GetComponent<RigidBody>()->SetGround(false);
+		}
+
+		//if (pixel.R == 255 && pixel.G == 0 && pixel.B == 255)
+		//{
+		//	maPlayer->GetComponent<RigidBody>()->SetGround(true);
+		//	Vector2 playerPos = maPlayer->GetPos();
+		//	playerPos.y -= 1.0f;
+		//	maPlayer->SetPos(playerPos);
+		//}
+		//else
+		//{
+		//	maPlayer->GetComponent<RigidBody>()->SetGround(false);
+		//}
 
 	}
 
 	void Map::Render(HDC hdc)
 	{
-
-
-
 		Vector2 pos = GetPos();
 		Vector2 mScale = GetScale();
 
@@ -72,7 +108,6 @@ namespace Nmy
 			, rect.x, rect.y, pImage->GetDc()
 			, 0, 0, pImage->GetWidth(), pImage->GetHeight()
 			, RGB(255, 0, 255));
-
 
 		Actor::Render(hdc);
 	}
@@ -97,7 +132,27 @@ namespace Nmy
 
 	}
 
-	Vector2 Map::GetImageWidth()
+	void Map::SetPixelImage(const std::wstring& key, const std::wstring& fileName, std::wstring path)
+	{
+
+		if (PixelImage == nullptr)
+		{
+			if (path == L"")
+			{
+				std::wstring mpath = L"..\\Resource\\Image\\";
+				mpath += fileName;
+				PixelImage = Resources::Load<image>(key, mpath);
+			}
+			else
+			{
+				path += fileName;
+				PixelImage = Resources::Load<image>(key, path);
+			}
+		}
+
+	}
+
+	Vector2 Map::GetImageVolume()
 	{
 		Vector2 temp;
 		temp.x = pImage->GetWidth();
@@ -106,12 +161,6 @@ namespace Nmy
 
 		return temp;
 	}
-
-	Vector2 Map::GetImageHeight()
-	{
-		return Vector2();
-	}
-
 
 
 }
