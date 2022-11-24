@@ -20,10 +20,10 @@ namespace Nmy
 		virtual void OnCollisionExit(Collider* other) override;
 
 
-		virtual void SlashBlust();
-		virtual void LeafAttack();
-		virtual void WarriorLeaf();
-		virtual void UpperCharge();
+		void SlashBlust();
+		void LeafAttack();
+		void WarriorLeaf();
+		void UpperCharge();
 
 
 

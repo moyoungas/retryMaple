@@ -30,6 +30,7 @@ namespace Nmy
 
 		Scene::aplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
 
+
 		Mob* mMob = Nmy::obj::Instantiate<Mob>(eColliderLayer::Mob);
 
 		Map* mMap = new Map();

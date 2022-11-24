@@ -23,48 +23,54 @@ Nmy::Player::Player()
 	SetScale({ 1.0f, 1.0f });
 	mCoff = 0.1f;
 
-	if (pImage == nullptr)
-	{
-		
-		// 여기서 경로 입력시 이 파일이 있는 경로에 로드를 함
-		// 그러므로 ..을 붙여 앞폴더로 나간 뒤 
-		pImage = Resources::Load<image>(L"Player", L"..\\Resource\\Image\\link.bmp");
-	}
+	//if (pImage == nullptr)
+	//{
+	//	
+	//	// 여기서 경로 입력시 이 파일이 있는 경로에 로드를 함
+	//	// 그러므로 ..을 붙여 앞폴더로 나간 뒤 
+	//	pImage = Resources::Load<image>(L"Player", L"..\\Resource\\Image\\link.bmp");
+	//}
 
 	mAnimator = new Animator();
-	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Player\\Idle", L"PlaneIdle");
+	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Idle", L"PlayerIdle");
+	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Walk", L"PlayerWalk");
+	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\WalkRight", L"PlayerWalkRight");
+	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Jump", L"PlayerJump");
 
-	mAnimator->CreateAnimation(L"Idle", pImage
-		, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f)
-		, Vector2(5.0f, -20.0f), 3, 0.1f);
-
-
-	mAnimator->CreateAnimation(L"MoveDown", pImage
-		, Vector2(0.0f, 520.0f), Vector2(120.0f, 130.0f)
-		, Vector2(5.0f, -20.0f), 10, 0.1f);
+	//mAnimator->CreateAnimation(L"Idle", pImage
+	//	, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f)
+	//	, Vector2(5.0f, -20.0f), 3, 0.1f);
 
 
-	mAnimator->CreateAnimation(L"MoveLeft", pImage
-		, Vector2(0.0f, 650.0f), Vector2(120.0f, 130.0f)
-		, Vector2(5.0f, -20.0f), 10, 0.1f);
-
-	mAnimator->CreateAnimation(L"MoveUP", pImage
-		, Vector2(0.0f, 780.0f), Vector2(120.0f, 130.0f)
-		, Vector2(5.0f, -20.0f), 10, 0.1f);
+	//mAnimator->CreateAnimation(L"MoveDown", pImage
+	//	, Vector2(0.0f, 520.0f), Vector2(120.0f, 130.0f)
+	//	, Vector2(5.0f, -20.0f), 10, 0.1f);
 
 
-	mAnimator->CreateAnimation(L"MoveRight", pImage
-		, Vector2(0.0f, 910.0f), Vector2(120.0f, 130.0f)
-		, Vector2(5.0f, -20.0f), 10, 0.1f);
+	//mAnimator->CreateAnimation(L"MoveLeft", pImage
+	//	, Vector2(0.0f, 650.0f), Vector2(120.0f, 130.0f)
+	//	, Vector2(5.0f, -20.0f), 10, 0.1f);
 
-	mAnimator->Play(L"Idle", true);/*
+	//mAnimator->CreateAnimation(L"MoveUP", pImage
+	//	, Vector2(0.0f, 780.0f), Vector2(120.0f, 130.0f)
+	//	, Vector2(5.0f, -20.0f), 10, 0.1f);
+
+
+	//mAnimator->CreateAnimation(L"MoveRight", pImage
+	//	, Vector2(0.0f, 910.0f), Vector2(120.0f, 130.0f)
+	//	, Vector2(5.0f, -20.0f), 10, 0.1f);
+
+	mAnimator->Play(L"PlayerIdle", true);/*
 	mAnimator->FindEvents(L"MoveRight")->mCompleteEvent = std::bind(&Player::WalkComplete, this);*/
-	mAnimator->GetCompleteEvents(L"MoveRight") = std::bind(&Player::WalkComplete, this);
+	//mAnimator->GetCompleteEvents(L"MoveRight") = std::bind(&Player::WalkComplete, this);
 
 	AddComponent(mAnimator);
 
 	Collider* coliider = new Collider();
 	AddComponent(coliider);
+	coliider->SetOffset(Vector2(5.0f, 0.0f));
+	Vector2 Scale = coliider->GetScale() - Vector2(50.0f, 50.0f);
+	coliider->SetScale(Vector2(35.0f, 70.0f));
 
 	AddComponent<RigidBody>();
 	Camera::SetTarget(this);
@@ -111,36 +117,36 @@ void Nmy::Player::Tick()
 
 	if (KEY_DOWN(eKeyCode::W))
 	{
-		mAnimator->Play(L"MoveUP", true);
+		//mAnimator->Play(L"MoveUP", true);
 	}
 	if (KEY_DOWN(eKeyCode::S))
 	{
-		mAnimator->Play(L"MoveDown", true);
+		//mAnimator->Play(L"MoveDown", true);
 	}
 	if (KEY_DOWN(eKeyCode::A))
 	{
-		mAnimator->Play(L"MoveLeft", true);
+		mAnimator->Play(L"PlayerWalk", true);
 	}
 	if (KEY_DOWN(eKeyCode::D))
 	{
-		mAnimator->Play(L"MoveRight", true);
+		mAnimator->Play(L"PlayerWalkRight", true);
 	}
 
 	if (KEY_UP(eKeyCode::W))
 	{
-		mAnimator->Play(L"Idle", true);
+		mAnimator->Play(L"PlayerIdle", true);
 	}
 	if (KEY_UP(eKeyCode::S))
 	{
-		mAnimator->Play(L"Idle", true);
+		mAnimator->Play(L"PlayerIdle", true);
 	}
 	if (KEY_UP(eKeyCode::A))
 	{
-		mAnimator->Play(L"Idle", true);
+		mAnimator->Play(L"PlayerIdle", true);
 	}
 	if (KEY_UP(eKeyCode::D))
 	{
-		mAnimator->Play(L"Idle", true);
+		mAnimator->Play(L"PlayerIdle", true);
 	}
 
 
@@ -150,14 +156,23 @@ void Nmy::Player::Tick()
 		RigidBody* rigidy = GetComponent<RigidBody>();
 		Vector2 velocity = rigidy->GetVelocity();
 		
-		if (rigidy->GetGround())
-		{
+		//if (rigidy->GetGround())
+		//{
 			velocity.y = -500.0f;
 			rigidy->SetVelocity(velocity);
 			rigidy->SetGround(false);
+		//}
+
+
+		mAnimator->Play(L"PlayerJump", true);
+
+		if (rigidy->GetGround() == true)
+		{
+			mAnimator->Play(L"PlayerIdle", true);
 		}
 
 	}
+
 
 	if (KEY_PRESSED(eKeyCode::LBTN))
 	{
@@ -180,7 +195,7 @@ void Nmy::Player::Tick()
 			mMissileDir = math::Rotate(mMissileDir, 5.0f);
 			missile->mDir = mMissileDir;
 		}
-
+			
 
 
 	}
@@ -223,14 +238,14 @@ void Nmy::Player::OnCollisionExit(Collider* other)
 }
 void Nmy::Player::WalkComplete()
 {
-	Missile* missile = new Missile();
-	Scene* playScene = SceneManager::GetPlayScene();
+	//Missile* missile = new Missile();
+	//Scene* playScene = SceneManager::GetPlayScene();
 
-	playScene->AddGameActor(missile, eColliderLayer::Player_Projecttile);
+	//playScene->AddGameActor(missile, eColliderLayer::Player_Projecttile);
 
-	Vector2 playerPos = GetPos();
-	Vector2 playerScale = GetScale() / 2.0f;
-	Vector2 missileScale = missile->GetScale();
+	//Vector2 playerPos = GetPos();
+	//Vector2 playerScale = GetScale() / 2.0f;
+	//Vector2 missileScale = missile->GetScale();
 
-	missile->SetPos((playerPos + playerScale) - (missileScale / 2.0f));
+	//missile->SetPos((playerPos + playerScale) - (missileScale / 2.0f));
 }

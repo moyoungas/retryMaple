@@ -25,10 +25,6 @@ namespace Nmy
 		SetPos(Vector2::Zero);
 		SetScale(Vector2::One);
 
-		if (PixelImage == nullptr)
-		{
-			PixelImage = Resources::Load<image>(L"BackUp", L"..\\Resource\\MapleSprite\\Map\\StartMapTest.bmp");
-		}
 
 	}
 

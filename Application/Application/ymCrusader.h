@@ -20,9 +20,9 @@ namespace Nmy
 		virtual void OnCollisionExit(Collider* other) override;
 
 
-		virtual void Rush();
-		virtual void BraveSlash();
-		virtual void ScaringSword();
+		void Rush();
+		void BraveSlash();
+		void ScaringSword();
 
 	private:
 
@@ -34,8 +34,6 @@ namespace Nmy
 
 
 		Animator* cSkillnumber1;
-		Animator* cSkillnumber2;
-		Animator* cSkillnumber3;
 
 
 		int mHp;

@@ -20,8 +20,8 @@ namespace Nmy
 		virtual void OnCollisionExit(Collider* other) override;
 
 
-		virtual void Brandish();
-		virtual void SpiritBlade();
+		void Brandish();
+		void SpiritBlade();
 
 		void SetHp(int hp) { mHp = hp; }
 		int GetHp() { return mHp; }
@@ -37,7 +37,6 @@ namespace Nmy
 
 
 		Animator* fSkillnumber1;
-		Animator* fSkillnumber2;
 
 
 		int mHp;

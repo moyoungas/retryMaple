@@ -62,17 +62,25 @@ namespace Nmy
 
 	void UIManager::Render(HDC hdc)
 	{
-		std::stack<UIBase*> uiBase = mUIBase;
-		while (!uiBase.empty())
+		std::stack<UIBase*> uiBases = mUIBase;
+		std::stack<UIBase*> tempStack;
+
+		// 뒤집어서 렌더링을 해준다.
+		while (!uiBases.empty())
 		{
-			UIBase* uiBases = uiBase.top();
+			UIBase* uiBase = uiBases.top();
+			tempStack.push(uiBase);
+			uiBases.pop();
+		}
 
-			if (uiBases != nullptr)
+		while (!tempStack.empty())
+		{
+			UIBase* uiBase = tempStack.top();
+			if (uiBase != nullptr)
 			{
-				uiBases->Render(hdc);
-
+				uiBase->Render(hdc);
 			}
-			uiBase.pop();
+			tempStack.pop();
 		}
 
 
@@ -136,7 +144,6 @@ namespace Nmy
 
 		std::stack<UIBase*> tempstack;
 
-
 		UIBase* uiBase = nullptr;
 		while (mUIBase.size() > 0)
 		{
@@ -162,6 +169,7 @@ namespace Nmy
 						}
 					}
 				}
+				uiBase->InActive();
 				uiBase->UIclear();
 			}
 

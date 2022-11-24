@@ -11,12 +11,11 @@ namespace Nmy
 	Fighter::Fighter()
 	{
 		fSkillnumber1 = new Animator();
-		fSkillnumber2 = new Animator();
 
 		fSkillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Fighter\\Skills\\Brandish", L"Brandish");
 		fSkillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Fighter\\Skills\\Brandishright", L"RightBrandish");
 
-		fSkillnumber2->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Fighter\\Skills\\SpiritBlade", L"SpiritBlade");
+		fSkillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Fighter\\Skills\\SpiritBlade", L"SpiritBlade");
 	}
 
 	Fighter::~Fighter()
@@ -56,7 +55,7 @@ namespace Nmy
 
 	void Fighter::SpiritBlade()
 	{
-		fSkillnumber2->Play(L"SpiritBlade", true);
+		fSkillnumber1->Play(L"SpiritBlade", true);
 	}
 
 }

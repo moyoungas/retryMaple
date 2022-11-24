@@ -11,21 +11,19 @@ namespace Nmy
 	Warrior::Warrior()
 	{
 		Skillnumber1 = new Animator();
-		Skillnumber2 = new Animator();
-		Skillnumber3 = new Animator();
-		Skillnumber4 = new Animator();
+
 
 		Skillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\LeafAttack", L"LeftLeafAttack");
 		Skillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\LeafAttackright", L"RightLeafAttack");
 
-		Skillnumber2->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\SlashBlust", L"Slashblust");
-		Skillnumber2->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\SlashBlustright", L"RightSlashblust");
-
-		Skillnumber3->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\UpperCharge", L"UpperCharge");
-		Skillnumber3->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\UpperChargeright", L"RightUpperCharge");
-
-		Skillnumber4->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\WarriorLeaf", L"WarriorLeaf");
-		Skillnumber4->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\WarriorLeafright", L"RightWarriorLeaf");
+		Skillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\SlashBlust", L"Slashblust");
+		Skillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\SlashBlustright", L"RightSlashblust");
+				   
+		Skillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\UpperCharge", L"UpperCharge");
+		Skillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\UpperChargeright", L"RightUpperCharge");
+				   
+		Skillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\WarriorLeaf", L"WarriorLeaf");
+		Skillnumber1->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Skill\\Warrior\\Skills\\WarriorLeafright", L"RightWarriorLeaf");
 	}
 
 	Warrior::~Warrior()
