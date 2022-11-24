@@ -2,9 +2,13 @@
 #include"Actor.h"
 #include "SceneManager.h"
 #include "ColliderManager.h"
+#include "Player.h"
 
 namespace Nmy
 {
+	Player* Scene::aplayer = nullptr;
+	Vector2 Scene::mLimited = Vector2::Zero;
+
 
 	Scene::Scene()
 	{
@@ -85,6 +89,8 @@ namespace Nmy
 		}
 		mActor[(UINT)type].push_back(actor);
 	}
+
+
 
 	void Scene::Enter()
 	{

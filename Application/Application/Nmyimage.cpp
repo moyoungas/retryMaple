@@ -6,8 +6,6 @@ namespace Nmy
 {
 	image* image::Create(const std::wstring& key, UINT width, UINT height)
 	{
-
-		
 		image* pimage = Resources::Find<image>(key);
 		if (pimage != nullptr)
 		{
@@ -18,6 +16,7 @@ namespace Nmy
 		pimage = new image();
 
 		HDC mainHDC = NewApplication::Getinstance().GetHDC();
+
 		pimage->mBitmap = CreateCompatibleBitmap(mainHDC, width, height);
 		pimage->mhdc = CreateCompatibleDC(mainHDC);
 

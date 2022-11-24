@@ -9,6 +9,13 @@ namespace Nmy
 	namespace obj
 	{
 
+		//template <typename T>
+		//static __forceinline T* ChageJop(T* actor, eColliderLayer type)
+		//{
+		//	T* mActor = dynamic_cast<T*>(actor);
+		//	return mactor;
+		//}
+
 		template <typename T>
 		static __forceinline T* Instantiate(eColliderLayer type)
 		{

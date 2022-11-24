@@ -167,16 +167,20 @@
     <ClInclude Include="ToolScene.h" />
     <ClInclude Include="UIBase.h" />
     <ClInclude Include="ymButton.h" />
+    <ClInclude Include="ymCrusader.h" />
+    <ClInclude Include="ymFighter.h" />
     <ClInclude Include="ymGround.h" />
     <ClInclude Include="ymHUD.h" />
     <ClInclude Include="ymMap.h" />
     <ClInclude Include="ymPanel.h" />
+    <ClInclude Include="ymPortal.h" />
     <ClInclude Include="ymRigidBody.h" />
     <ClInclude Include="ymSound.h" />
     <ClInclude Include="ymSoundManager.h" />
     <ClInclude Include="ymTile.h" />
     <ClInclude Include="ymTilePalette.h" />
     <ClInclude Include="ymUIManager.h" />
+    <ClInclude Include="ymWarrior.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
@@ -212,16 +216,20 @@
     <ClCompile Include="ToolScene.cpp" />
     <ClCompile Include="UIBase.cpp" />
     <ClCompile Include="ymButton.cpp" />
+    <ClCompile Include="ymCrusader.cpp" />
+    <ClCompile Include="ymFighter.cpp" />
     <ClCompile Include="ymGround.cpp" />
     <ClCompile Include="ymHUD.cpp" />
     <ClCompile Include="ymMap.cpp" />
     <ClCompile Include="ymPanel.cpp" />
+    <ClCompile Include="ymPortal.cpp" />
     <ClCompile Include="ymRigidBody.cpp" />
     <ClCompile Include="ymSound.cpp" />
     <ClCompile Include="ymSoundManager.cpp" />
     <ClCompile Include="ymTile.cpp" />
     <ClCompile Include="ymTilePalette.cpp" />
     <ClCompile Include="ymUIManager.cpp" />
+    <ClCompile Include="ymWarrior.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Application.rc" />

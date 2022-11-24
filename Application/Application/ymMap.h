@@ -6,6 +6,7 @@ namespace Nmy
 {
 	class image;
 	class Player;
+	class Mob;
 
 	class Map : public Actor
 	{
@@ -22,11 +23,14 @@ namespace Nmy
 
 		Vector2 GetImageVolume();
 		void SetPlayer(Player* player) { maPlayer = player; }
+		void SetMob(Mob* mob) { mMapMob = mob; }
 
 
 	private:
 		Vector2 PlayerPos;
 		Player* maPlayer;
+		Mob* mMapMob;
+		Vector2 mMobPos;
 		image* pImage;
 		image* PixelImage;
 	};

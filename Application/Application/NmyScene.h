@@ -7,6 +7,7 @@
 namespace Nmy
 {
 	class Actor;
+	class Player;
 
 	class Scene : public Entity 
 	{
@@ -24,6 +25,12 @@ namespace Nmy
 		std::vector<std::vector<Actor*>>& GetActorObjects() { return mActor; }
 
 		std::vector<Actor*>& GetActor(eColliderLayer type) { return mActor[(UINT)type]; }
+
+		static Vector2 GetmLimited() { return mLimited; }
+
+		static Player* aplayer;
+	protected:
+		static Vector2 mLimited;
 
 	private:
 		std::vector<std::vector<Actor*>> mActor;

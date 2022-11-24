@@ -4,16 +4,46 @@
 #include "SceneManager.h"
 #include "NmyBGActor.h"
 
+#include "NmyMob.h"
+#include "ymMap.h"
+#include "ymRigidBody.h"
+#include "NmyObject.h"
+#include "ColliderManager.h"
+
+
 namespace Nmy
 {
+
+	PlayScene::PlayScene()
+	{
+	}
+	PlayScene::~PlayScene()
+	{
+	}
+
 	void PlayScene::Initialize()
 	{
-
 		BGActor* bg = new BGActor();
-		bg->SetImage(L"backGroundMap", L"backGroundMap.bmp");
+		bg->SetImage(L"backimg", L"backGroundimg.bmp", L"..\\Resource\\MapleSprite\\back\\");
 		bg->Initialize();
-
 		AddGameActor(bg, eColliderLayer::BackGround);
+
+		Scene::aplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
+
+		Mob* mMob = Nmy::obj::Instantiate<Mob>(eColliderLayer::Mob);
+
+		Map* mMap = new Map();
+		//mMap->SetImage(L"mapimg", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+		mMap->SetImage(L"StartMap1", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+		mMap->SetPixelImage(L"pixel", L"StartMapTest.bmp", L"..\\Resource\\MapleSprite\\Map\\");
+		mMap->SetPlayer(aplayer);
+		mMap->SetMob(mMob);
+		AddGameActor(mMap, eColliderLayer::Map);
+
+
+		Vector2 mSaveMap = mMap->GetImageVolume();
+		Scene::mLimited = mSaveMap;
+
 	}
 	void PlayScene::Tick()
 	{
@@ -29,14 +59,14 @@ namespace Nmy
 	void PlayScene::Render(HDC hdc)
 	{
 
-		wchar_t szFloat[50] = {};
-		swprintf_s(szFloat, 50, L"PlayScene");
-		int strlen = wcsnlen_s(szFloat, 50);
-		TextOut(hdc, 10, 30, szFloat, strlen);
 		Scene::Render(hdc);
 	}
 	void PlayScene::Enter()
 	{
+
+
+		ColliderManager::SetLayer(eColliderLayer::Mob, eColliderLayer::Player, true);
+		ColliderManager::SetLayer(eColliderLayer::Mob, eColliderLayer::Player_Projecttile, true);
 
 
 
@@ -44,10 +74,5 @@ namespace Nmy
 	void PlayScene::Exit()
 	{
 	}
-	PlayScene::PlayScene()
-	{
-	}
-	PlayScene::~PlayScene()
-	{
-	}
+
 }

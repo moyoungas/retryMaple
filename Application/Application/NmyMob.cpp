@@ -27,12 +27,12 @@ namespace Nmy
 		AddComponent(mAnimator);
 
 		Collider* collider = new Collider();
-		collider->SetOffset(Vector2(-70.0f,-70.0f));
+		AddComponent(collider);
+	/*	collider->SetOffset(Vector2(-70.0f,-70.0f));*/
 		Vector2 Scale = collider->GetScale() - Vector2(50.0f,50.0f);
 		collider->SetScale(Scale);
 
-		AddComponent(collider);
-		//AddComponent<RigidBody>();
+		AddComponent<RigidBody>();
 
 	}
 	Mob::~Mob()
@@ -58,7 +58,7 @@ namespace Nmy
 
 	void Mob::OnCollisionEnter(Collider* other)
 	{
-
+		int a = 0;
 
 
 	}

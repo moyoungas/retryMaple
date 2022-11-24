@@ -28,7 +28,7 @@ namespace Nmy
 		static Actor* mTarget;
 		static Vector2 mCameraLimited;
 
-		Vector2 mLimitedA;
+		static Vector2 mLimitedA;
 
 		static float prevY;
 

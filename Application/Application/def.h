@@ -56,9 +56,8 @@ enum class eColliderLayer
 	Player,
 	Player_Projecttile,
 	Mob,
-	Monster,
-	Monster_Projecttile,
-	Ground,
+	Mob_Projecttile,
+	Portal,
 	BACKPACK,
 
 	UI = _COLLIDER_LAYER - 1,

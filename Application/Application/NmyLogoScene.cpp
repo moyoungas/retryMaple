@@ -16,16 +16,19 @@
 #include "ymHUD.h"
 #include "NmyCamera.h"
 #include "ymButton.h"
+#include "Time.h"
+#include "ymWarrior.h"
+#include "ymPortal.h"
 
 
 namespace Nmy
 {
-	Vector2 LogoScene::mLimited;
 
 
 }
 
 Nmy::LogoScene::LogoScene()
+	:maTime(0.0f)
 {
 }
 
@@ -35,31 +38,17 @@ Nmy::LogoScene::~LogoScene()
 
 void Nmy::LogoScene::Initialize()
 {
+
 	BGActor* bg = new BGActor();
-	bg->SetImage(L"backimg", L"backGroundimg.bmp", L"..\\Resource\\MapleSprite\\back\\");
+	bg->SetImage(L"Logoimage", L"Logoimage.bmp");
 	bg->Initialize();
 	AddGameActor(bg, eColliderLayer::BackGround);
 
-	Player* mplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
 
-	Map* mMap = new Map();
-	//mMap->SetImage(L"mapimg", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
-	mMap->SetImage(L"StartMap1", L"StartMap.bmp", L"..\\Resource\\MapleSprite\\Map\\");
-	mMap->SetPixelImage(L"pixel", L"StartMapTest.bmp", L"..\\Resource\\MapleSprite\\Map\\");
-	mMap->SetPlayer(mplayer);
-	AddGameActor(mMap, eColliderLayer::Map);
-
-	Vector2 mSaveMap = mMap->GetImageVolume();
-	mLimited = mSaveMap;
-
-	Mob* mMob = Nmy::obj::Instantiate<Mob>(eColliderLayer::Mob);
-
-
-
-	UIManager::Push(eUIType::Inventory);
-	//Button* hp = UIManager::GetUiInstant<Button>(eUIType::HP);
-	HUD* hp = UIManager::GetUiInstant<HUD>(eUIType::MP);
-	hp->SetTarget(mplayer);
+	//UIManager::Push(eUIType::Inventory);
+	////Button* hp = UIManager::GetUiInstant<Button>(eUIType::HP);
+	//HUD* hp = UIManager::GetUiInstant<HUD>(eUIType::MP);
+	//hp->SetTarget(aplayer);
 }
 
 void Nmy::LogoScene::Tick()
@@ -68,6 +57,7 @@ void Nmy::LogoScene::Tick()
 	// 부모것을 호출하고 자기것을 작업하자
 	// 유니티에선 막아둠
 	Scene::Tick();
+
 
 
 	if (KEY_DOWN(eKeyCode::N))
@@ -89,10 +79,8 @@ void Nmy::LogoScene::Enter()
 {
 
 
-	ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player, true);
-	ColliderManager::SetLayer(eColliderLayer::Monster, eColliderLayer::Player_Projecttile, true);
-	ColliderManager::SetLayer(eColliderLayer::Ground, eColliderLayer::Player, true);
-	ColliderManager::SetLayer(eColliderLayer::Ground, eColliderLayer::Mob, true);
+	ColliderManager::SetLayer(eColliderLayer::Mob, eColliderLayer::Player, true);
+	ColliderManager::SetLayer(eColliderLayer::Mob, eColliderLayer::Player_Projecttile, true);
 
 
 }

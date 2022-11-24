@@ -76,6 +76,12 @@
     <Filter Include="Sound">
       <UniqueIdentifier>{546d4a66-73c4-4eaa-853f-1e8a18f9b959}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\Class">
+      <UniqueIdentifier>{5a4298c7-7638-44c9-9bfa-2691249df9f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Portal">
+      <UniqueIdentifier>{0913cacc-83d3-4906-be61-038043615721}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -222,6 +228,18 @@
     <ClInclude Include="ymSound.h">
       <Filter>Sound</Filter>
     </ClInclude>
+    <ClInclude Include="ymWarrior.h">
+      <Filter>Actor\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ymFighter.h">
+      <Filter>Actor\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ymCrusader.h">
+      <Filter>Actor\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ymPortal.h">
+      <Filter>Map\Portal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Application.rc">
@@ -365,6 +383,18 @@
     </ClCompile>
     <ClCompile Include="ymSound.cpp">
       <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="ymWarrior.cpp">
+      <Filter>Actor\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ymFighter.cpp">
+      <Filter>Actor\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ymCrusader.cpp">
+      <Filter>Actor\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="ymPortal.cpp">
+      <Filter>Map\Portal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

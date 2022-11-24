@@ -8,6 +8,9 @@
 #include "NmyLogoScene.h"
 #include "ymRigidBody.h"
 #include "NmyInput.h"
+#include "NmyMob.h"
+#include "ymPortal.h"
+
 
 namespace Nmy
 {
@@ -51,6 +54,8 @@ namespace Nmy
 			return;
 		}
 
+
+
 		PlayerPos = maPlayer->GetPos();
 		Pixel pixel = PixelImage->GetPixelImage(PlayerPos.x, PlayerPos.y + 50.0f);
 
@@ -63,9 +68,11 @@ namespace Nmy
 			}
 
 			maPlayer->GetComponent<RigidBody>()->SetGround(true);
+
 			Vector2 playerPos = maPlayer->GetPos();
 			playerPos.y -= 1.0f;
 			maPlayer->SetPos(playerPos);
+
 		}
 		else if (pixel.R == 255 && pixel.G == 0 && pixel.B == 255)
 		{
@@ -85,17 +92,43 @@ namespace Nmy
 			maPlayer->GetComponent<RigidBody>()->SetGround(false);
 		}
 
-		//if (pixel.R == 255 && pixel.G == 0 && pixel.B == 255)
-		//{
-		//	maPlayer->GetComponent<RigidBody>()->SetGround(true);
-		//	Vector2 playerPos = maPlayer->GetPos();
-		//	playerPos.y -= 1.0f;
-		//	maPlayer->SetPos(playerPos);
-		//}
-		//else
-		//{
-		//	maPlayer->GetComponent<RigidBody>()->SetGround(false);
-		//}
+		if (mMapMob == nullptr)
+		{
+			return;
+		}
+
+		mMobPos = mMapMob->GetPos();
+		Pixel Mobpixel = PixelImage->GetPixelImage(mMobPos.x, mMobPos.y + 35);
+
+		if (Mobpixel.R == 0 && Mobpixel.G == 0 && Mobpixel.B == 255)
+		{
+
+			mMapMob->GetComponent<RigidBody>()->SetGround(true);
+
+			Vector2 playerPos = mMapMob->GetPos();
+			playerPos.y -= 1.0f;
+			mMapMob->SetPos(playerPos);
+
+		}
+		else if (Mobpixel.R == 255 && Mobpixel.G == 0 && Mobpixel.B == 255)
+		{
+			mMapMob->GetComponent<RigidBody>()->SetGround(true);
+			Vector2 playerPos = mMapMob->GetPos();
+			playerPos.y -= 1.0f;
+			mMapMob->SetPos(playerPos);
+		}
+		else if (Mobpixel.R == 255 && Mobpixel.G == 0 && Mobpixel.B == 0)
+		{
+			Vector2 playerPos = mMapMob->GetPos();
+			playerPos.x += 10.0f;
+			mMapMob->SetPos(playerPos);
+		}
+		else
+		{
+			mMapMob->GetComponent<RigidBody>()->SetGround(false);
+		}
+
+
 
 	}
 

@@ -25,14 +25,14 @@ namespace Nmy
 
 		Player* GetPlayer() { return maPlayer; }
 
-		static Vector2 GetmLimited() { return mLimited; }
+
 
 
 
 	private:
-		static Vector2 mLimited;
 		Player* maPlayer;
 		Monster* mons[2];
+		float maTime;
 	};
 
 }

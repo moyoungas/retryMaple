@@ -122,8 +122,8 @@ namespace Nmy
 	, Vector2 offset , float duration)
 	{
 
-		UINT width = 200;
-		UINT height = 200;
+		UINT width = 0;
+		UINT height = 0;
 		UINT filecount = 0;
 		
 		std::filesystem::path mpath(path);

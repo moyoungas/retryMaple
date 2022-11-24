@@ -32,8 +32,7 @@ Nmy::Player::Player()
 	}
 
 	mAnimator = new Animator();
-	//mAnimator->CreateAnimations(L"..\\Resource\\Animation\\Player\\Idle"
-	//	, L"PlaneIdle");
+	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Player\\Idle", L"PlaneIdle");
 
 	mAnimator->CreateAnimation(L"Idle", pImage
 		, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f)
@@ -66,21 +65,6 @@ Nmy::Player::Player()
 
 	Collider* coliider = new Collider();
 	AddComponent(coliider);
-
-	coliider->SetOffset(Vector2(0.0f, 50.0f));
-	coliider->SetScale(Vector2(10.0f, 10.0f));
-
-	Collider* coliider2 = new Collider();
-	AddComponent(coliider2);
-
-	coliider2->SetOffset(Vector2(50.0f, 0.0f));
-	coliider2->SetScale(Vector2(10.0f, 10.0f));
-
-	Collider* coliider3 = new Collider();
-	AddComponent(coliider3);
-
-	coliider3->SetOffset(Vector2(-20.0f, 0.0f));
-	coliider3->SetScale(Vector2(10.0f, 10.0f));
 
 	AddComponent<RigidBody>();
 	Camera::SetTarget(this);

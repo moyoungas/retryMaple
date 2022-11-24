@@ -16,6 +16,7 @@ namespace Nmy
 	Vector2 Camera::mDistance = Vector2::Zero;
 	Actor* Camera::mTarget = nullptr;
 	Vector2 Camera::mCameraLimited = Vector2::Zero;
+	Vector2 Camera::mLimitedA = Vector2::Zero;
 
 
 
@@ -50,16 +51,16 @@ namespace Nmy
 		if (mTarget != nullptr)
 		{
 			mLookPosition = mTarget->GetPos();
-			mCameraLimited = LogoScene::GetmLimited() - mTarget->GetPos();
+			mCameraLimited = Scene::GetmLimited() - mTarget->GetPos();
 		}
 		
 
-		//if (mLookPosition.x < 800 || mLookPosition.x > 1460)
-		//{
-		//	return;
-		//}
-		//if (mLookPosition.y > 1350)
-		//	return;
+		if (mLookPosition.x < 800 || mLookPosition.x > 1460)
+		{
+			return;
+		}
+		if (mLookPosition.y > 1350)
+			return;
 
 		if (mCameraLimited.x  > 1460.0f || mCameraLimited.x < 800)
 		{

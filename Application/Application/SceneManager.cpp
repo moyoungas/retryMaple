@@ -32,7 +32,7 @@ namespace Nmy
 		mScene[(UINT)eSceneType::End]->Initialize();
 
 
-		ChangeScene(eSceneType::Logo);
+		ChangeScene(eSceneType::Play);
 		// 자식이 부모로 업캐스팅
 		// 부모가 자식이 다운캐스팅
 		//Scene* t = new LogoScene();
