@@ -4,12 +4,15 @@
 
 namespace Nmy
 {
+	class Mob;
+	class Map;
+	class Player;
 
-	class EndScene : public Scene
+	class Play2Scene : public Scene
 	{
 	public:
-		EndScene();
-		~EndScene();
+		Play2Scene();
+		~Play2Scene();
 
 
 		virtual void Initialize() override;
@@ -20,7 +23,9 @@ namespace Nmy
 		virtual void Exit();
 
 	private:
-
+		Mob* mMob;
+		Map* restMap;
+		Player* mPlayer;
 
 	};
 

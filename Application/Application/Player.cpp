@@ -17,6 +17,7 @@ Nmy::Player::Player()
 	: mSpeed(1.0f)
 	, mHp(100)
 	, isJump(false)
+	, isRight(false)
 {
 	SetPos({ 900.0f, 100.0f });
 	SetPlayerPos({ 900.0f, 100.0f });
@@ -36,6 +37,7 @@ Nmy::Player::Player()
 	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Walk", L"PlayerWalk");
 	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\WalkRight", L"PlayerWalkRight");
 	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Jump", L"PlayerJump");
+	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\JumpRight", L"PlayerJumpRight");
 
 	//mAnimator->CreateAnimation(L"Idle", pImage
 	//	, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f)
@@ -125,10 +127,13 @@ void Nmy::Player::Tick()
 	}
 	if (KEY_DOWN(eKeyCode::A))
 	{
+		isRight = false;
 		mAnimator->Play(L"PlayerWalk", true);
 	}
 	if (KEY_DOWN(eKeyCode::D))
 	{
+
+		isRight = true;
 		mAnimator->Play(L"PlayerWalkRight", true);
 	}
 
@@ -142,6 +147,7 @@ void Nmy::Player::Tick()
 	}
 	if (KEY_UP(eKeyCode::A))
 	{
+		isRight = false;
 		mAnimator->Play(L"PlayerIdle", true);
 	}
 	if (KEY_UP(eKeyCode::D))
@@ -162,9 +168,17 @@ void Nmy::Player::Tick()
 			rigidy->SetVelocity(velocity);
 			rigidy->SetGround(false);
 		//}
+		if (isRight)
+		{
+			mAnimator->Play(L"PlayerJumpRight", true);
+		}
+		else
+		{
+			mAnimator->Play(L"PlayerJump", true);
+
+		}
 
 
-		mAnimator->Play(L"PlayerJump", true);
 
 		if (rigidy->GetGround() == true)
 		{

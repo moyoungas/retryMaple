@@ -6,7 +6,6 @@
 #include "Time.h"
 #include "Nmyimage.h"
 #include "ymMap.h"
-#include "NmyLogoScene.h"
 #include "NmyScene.h"
 
 namespace Nmy

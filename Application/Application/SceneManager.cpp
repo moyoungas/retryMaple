@@ -2,7 +2,7 @@
 #include "NmyLogoScene.h"
 #include "TitleScene.h"
 #include "NmyPlayScene.h"
-#include "NmyEndingScene.h"
+#include "NmyPlay2Scene.h"
 #include "NmyObject.h"
 #include "ToolScene.h"
 
@@ -28,8 +28,8 @@ namespace Nmy
 		mScene[(UINT)eSceneType::Play]->Initialize();
 
 
-		mScene[(UINT)eSceneType::End] = new EndScene;
-		mScene[(UINT)eSceneType::End]->Initialize();
+		mScene[(UINT)eSceneType::Play2] = new Play2Scene;
+		mScene[(UINT)eSceneType::Play2]->Initialize();
 
 
 		ChangeScene(eSceneType::Play);

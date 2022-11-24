@@ -153,7 +153,7 @@
     <ClInclude Include="NmyPlayScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="NmyEndingScene.h">
+    <ClInclude Include="NmyPlay2Scene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="NmyBGActor.h">
@@ -312,7 +312,7 @@
     <ClCompile Include="NmyPlayScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="NmyEndingScene.cpp">
+    <ClCompile Include="NmyPlay2Scene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="NmyBGActor.cpp">

@@ -138,7 +138,7 @@
     <ClInclude Include="NmyBacKPack.h" />
     <ClInclude Include="NmyBGActor.h" />
     <ClInclude Include="NmyCamera.h" />
-    <ClInclude Include="NmyEndingScene.h" />
+    <ClInclude Include="NmyPlay2Scene.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="Missile.h" />
@@ -191,7 +191,7 @@
     <ClCompile Include="NmyBackPack.cpp" />
     <ClCompile Include="NmyBGActor.cpp" />
     <ClCompile Include="NmyCamera.cpp" />
-    <ClCompile Include="NmyEndingScene.cpp" />
+    <ClCompile Include="NmyPlay2Scene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Maths.cpp" />
     <ClCompile Include="Missile.cpp" />

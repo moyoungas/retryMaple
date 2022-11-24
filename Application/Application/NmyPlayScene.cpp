@@ -52,7 +52,7 @@ namespace Nmy
 
 		if (KEY_DOWN(eKeyCode::N))
 		{
-			SceneManager::ChangeScene(eSceneType::End);
+			SceneManager::ChangeScene(eSceneType::Play2);
 		}
 
 

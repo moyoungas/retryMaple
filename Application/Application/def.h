@@ -12,6 +12,7 @@ enum class eSceneType
 	Title,
 	Tool,
 	Play,
+	Play2,
 	End,
 	MAX,
 
