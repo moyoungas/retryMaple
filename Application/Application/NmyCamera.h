@@ -14,7 +14,8 @@ namespace Nmy
 		static void Render(HDC hdc);
 		
 
-		static Vector2 CalculatePos(Vector2 pos) { return pos - mDistance; }
+		static Vector2 CalculatePos(Vector2 pos)
+		{ return pos - mDistance; }
 		static void SetTarget(Actor* actor) { mTarget = actor; }
 
 

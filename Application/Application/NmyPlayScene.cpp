@@ -9,6 +9,7 @@
 #include "ymRigidBody.h"
 #include "NmyObject.h"
 #include "ColliderManager.h"
+#include "ymPortal.h"
 
 
 namespace Nmy
@@ -30,7 +31,6 @@ namespace Nmy
 
 		Scene::aplayer = Nmy::obj::Instantiate<Player>(eColliderLayer::Player);
 
-
 		Mob* mMob = Nmy::obj::Instantiate<Mob>(eColliderLayer::Mob);
 
 		Map* mMap = new Map();
@@ -40,6 +40,9 @@ namespace Nmy
 		mMap->SetPlayer(aplayer);
 		mMap->SetMob(mMob);
 		AddGameActor(mMap, eColliderLayer::Map);
+
+		Portal* mPortal = Nmy::obj::Instantiate<Portal>(eColliderLayer::Portal);
+		mPortal->SetPos(Vector2(2092.0f, 1210.0f));
 
 
 		Vector2 mSaveMap = mMap->GetImageVolume();
@@ -68,6 +71,7 @@ namespace Nmy
 
 		ColliderManager::SetLayer(eColliderLayer::Mob, eColliderLayer::Player, true);
 		ColliderManager::SetLayer(eColliderLayer::Mob, eColliderLayer::Player_Projecttile, true);
+		ColliderManager::SetLayer(eColliderLayer::Portal, eColliderLayer::Player, true);
 
 
 

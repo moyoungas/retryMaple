@@ -19,7 +19,7 @@ namespace Nmy
 		virtual void OnCollisionStay(Collider* other) override;
 		virtual void OnCollisionExit(Collider* other) override;
 
-
+		eColliderLayer GetColliderLayer() { return eColliderLayer::Player; }
 		void WalkComplete();
 		void SetHp(int hp) { mHp = hp; }
 		int GetHp() { return mHp; }

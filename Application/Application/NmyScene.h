@@ -26,6 +26,9 @@ namespace Nmy
 
 		std::vector<Actor*>& GetActor(eColliderLayer type) { return mActor[(UINT)type]; }
 
+
+		static Player* GetPlayer() { return aplayer; }
+
 		static Vector2 GetmLimited() { return mLimited; }
 
 		static Player* aplayer;

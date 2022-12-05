@@ -53,7 +53,7 @@ namespace Nmy
 
 
 		PlayerPos = maPlayer->GetPos();
-		Pixel pixel = PixelImage->GetPixelImage(PlayerPos.x, PlayerPos.y + 50.0f);
+		Pixel pixel = PixelImage->GetPixelImage(PlayerPos.x, PlayerPos.y + 38);
 
 		if (pixel.R == 0 && pixel.G == 0 && pixel.B == 255)
 		{

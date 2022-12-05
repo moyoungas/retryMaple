@@ -3,6 +3,8 @@
 #include "SceneManager.h"
 #include "ColliderManager.h"
 #include "Player.h"
+#include "NmyObject.h"
+
 
 namespace Nmy
 {
@@ -46,6 +48,9 @@ namespace Nmy
 			}
 
 		}
+
+
+
 	}
 
 	void Scene::Tick()

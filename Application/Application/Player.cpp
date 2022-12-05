@@ -34,6 +34,7 @@ Nmy::Player::Player()
 
 	mAnimator = new Animator();
 	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Idle", L"PlayerIdle");
+	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Idleright", L"PlayerIdleright");
 	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Walk", L"PlayerWalk");
 	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\WalkRight", L"PlayerWalkRight");
 	mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Character\\Jump", L"PlayerJump");
@@ -143,7 +144,14 @@ void Nmy::Player::Tick()
 	}
 	if (KEY_UP(eKeyCode::S))
 	{
+		if (isRight)
+		{
+			mAnimator->Play(L"PlayerIdleright", true);
+			return;
+		}
+
 		mAnimator->Play(L"PlayerIdle", true);
+
 	}
 	if (KEY_UP(eKeyCode::A))
 	{
@@ -152,6 +160,11 @@ void Nmy::Player::Tick()
 	}
 	if (KEY_UP(eKeyCode::D))
 	{
+		if (isRight)
+		{
+			mAnimator->Play(L"PlayerIdleright", true);
+			return;
+		}
 		mAnimator->Play(L"PlayerIdle", true);
 	}
 

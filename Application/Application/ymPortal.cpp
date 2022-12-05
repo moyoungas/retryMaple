@@ -2,6 +2,7 @@
 #include "NmyAnimator.h"
 #include "Player.h"
 #include "NmyCollider.h"
+#include "NmyCollider.h"
 
 namespace Nmy
 {
@@ -14,7 +15,11 @@ namespace Nmy
 		mAnimator = new Animator();
 		mAnimator->CreateAnimations(L"..\\Resource\\MapleSprite\\Portal", L"Portal");
 		mAnimator->Play(L"Portal", true);
+		Collider* collider = new Collider();
+
+
 		AddComponent(mAnimator);
+		AddComponent(collider);
 	}
 
 	Portal::~Portal()

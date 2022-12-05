@@ -9,9 +9,9 @@ namespace Nmy
 	{
 	public:
 
-		virtual void Initialize();
-		virtual void Tick();
-		virtual void Render(HDC hdc);
+		virtual void Initialize() override;
+		virtual void Tick() override;
+		virtual void Render(HDC hdc) override;
 
 
 		virtual void Enter();

@@ -47,35 +47,26 @@ namespace Nmy
 
 
 
-		if (mTarget != nullptr)
-		{
-			mLookPosition = mTarget->GetPos();
-			mCameraLimited = Scene::GetmLimited() - mTarget->GetPos();
-		}
+
 		
 
-		if (mLookPosition.x < 800 || mLookPosition.x > 1460)
-		{
-			return;
-		}
-		if (mLookPosition.y > 1350)
-			return;
+		//if (mLookPosition.x < 800)
+		//{
+		//	mDistance.y = mLookPosition.y - (mResolution.y / 2.0f) - 167.0f;
+		//	return;
+		//}
+		//if (mLookPosition.x > 1400 && mLookPosition.x < 1445)
+		//{
 
-		if (mCameraLimited.x  > 1460.0f || mCameraLimited.x < 800)
-		{
+		//	mDistance.x = mLookPosition.x - (mResolution.x / 2.0f);
+		//	return;
+		//}
+		//if (mLookPosition.y > 1350)
+		//{
 
-				return;
-
-		}
-		if (mCameraLimited.y < 470)
-		{
-			if (true)
-			{
-
-			}
-
-			return;
-		}
+ 	//		mDistance.x = mLookPosition.x - (mResolution.x / 2.0f);
+		//	return;
+		//}
 
 
 		//if (mLookPosition.y > 1350)
@@ -100,25 +91,32 @@ namespace Nmy
 		//	}
 		//}
 
-		//if (KEY_PRESSED(eKeyCode::UP))
-		//{
-		//	mLookPosition.y -= 600.0f * Time::DeltaTime();
-		//}
-		//if (KEY_PRESSED(eKeyCode::DOWN))
-		//{
-		//	mLookPosition.y += 600.0f * Time::DeltaTime();
-		//}
-		//if (KEY_PRESSED(eKeyCode::LEFT))
-		//{
-		//	mLookPosition.x -= 600.0f * Time::DeltaTime();
-		//}
-		//if (KEY_PRESSED(eKeyCode::RIGHT))
-		//{
-		//	mLookPosition.x += 600.0f * Time::DeltaTime();
-		//}
+		if (KEY_PRESSED(eKeyCode::UP))
+		{
+			mLookPosition.y -= 600.0f * Time::DeltaTime();
+		}
+		if (KEY_PRESSED(eKeyCode::DOWN))
+		{
+			mLookPosition.y += 600.0f * Time::DeltaTime();
+		}
+		if (KEY_PRESSED(eKeyCode::LEFT))
+		{
+			mLookPosition.x -= 600.0f * Time::DeltaTime();
+		}
+		if (KEY_PRESSED(eKeyCode::RIGHT))
+		{
+			mLookPosition.x += 600.0f * Time::DeltaTime();
+		}
 
+
+		if (mTarget != nullptr)
+		{
+			mLookPosition = mTarget->GetPos();
+			mCameraLimited = Scene::GetmLimited() - mTarget->GetPos();
+		}
 
 		mDistance = mLookPosition - (mResolution / 2.0f);
+
 		prevY = mLookPosition.y;
 
 	}
